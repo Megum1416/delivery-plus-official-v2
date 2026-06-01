@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外送菜單規劃助理</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F8F8F8;
+    --surface: #FFFFFF;
+    --surface2: #F2F2F2;
+    --border: rgba(0,0,0,0.10);
+    --curry: #06C167;
+    --curry-light: #29D67A;
+    --curry-pale: #E6F9EF;
+    --cream: #1A1A1A;
+    --muted: #767676;
+    --green: #06C167;
+    --red: #E05A5A;
+    --text: #1A1A1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    box-shadow: 0 1px 0 var(--border);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--curry);
+    letter-spacing: 3px;
+  }
+  .logo span { color: var(--muted); font-size: 12px; letter-spacing: 2px; margin-left: 12px; }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    header { padding: 16px 20px; }
+    .container { padding: 24px 16px; }
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+  }
+  .card-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--curry);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  /* FORM */
+  .field { margin-bottom: 16px; }
+  label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  input, select, textarea {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--curry);
+  }
+  select option { background: var(--surface2); }
+  textarea { resize: vertical; min-height: 80px; }
+
+  /* ITEMS TABLE */
+  .items-header {
+    display: grid;
+    grid-template-columns: 1fr 100px 36px;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .items-header span {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+  .item-row {
+    display: grid;
+    grid-template-columns: 1fr 100px 36px;
+    gap: 8px;
+    margin-bottom: 8px;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .btn-remove {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .btn-remove:hover { border-color: var(--red); color: var(--red); }
+
+  .btn-add {
+    width: 100%;
+    background: transparent;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 10px;
+    margin-top: 4px;
+    transition: all 0.2s;
+  }
+  .btn-add:hover { border-color: var(--curry); color: var(--curry); }
+
+  /* GENERATE BTN */
+  .btn-generate {
+    width: 100%;
+    background: var(--curry);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 14px;
+    margin-top: 8px;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-generate:hover { background: var(--curry-light); }
+  .btn-generate:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* OUTPUT */
+  .output-wrap {
+    grid-column: 1 / -1;
+  }
+  .output-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    min-height: 200px;
+  }
+  .output-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .output-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--curry);
+    text-transform: uppercase;
+  }
+  .btn-copy {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    transition: all 0.2s;
+  }
+  .btn-copy:hover { border-color: var(--curry); color: var(--curry); }
+
+  /* RESULT CONTENT */
+  #result {
+    font-size: 13px;
+    line-height: 2;
+    color: var(--text);
+    white-space: pre-wrap;
+  }
+  #result .sec-title {
+    color: var(--curry);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin: 20px 0 10px;
+    border-bottom: 1px solid var(--curry-pale);
+    padding-bottom: 6px;
+  }
+  #result .item-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  #result .item-name { font-weight: 500; min-width: 140px; }
+  #result .item-price { color: var(--curry); font-family: 'Cormorant Garamond', serif; font-size: 16px; white-space: nowrap; }
+  #result .item-take { color: var(--green); font-size: 12px; white-space: nowrap; }
+  #result .item-copy { color: var(--muted); font-size: 12px; flex: 1; }
+
+  /* LOADING */
+  .loading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--curry);
+    animation: pulse 1.2s ease infinite;
+  }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* PLACEHOLDER */
+  .placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    gap: 12px;
+    color: var(--muted);
+  }
+  .placeholder-icon { font-size: 32px; opacity: 0.4; }
+  .placeholder-text { font-size: 12px; letter-spacing: 1.5px; }
+
+  .btn-name {
+    background: transparent;
+    border: 1px solid var(--curry);
+    border-radius: 4px;
+    color: var(--curry);
+    cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 0 16px;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-name:hover { background: var(--curry); color: #fff; }
+  .btn-name:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .name-option {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    padding: 12px 14px;
+    transition: all 0.2s;
+    animation: fadeIn 0.3s ease;
+  }
+  .name-option:hover { border-color: var(--curry); }
+  .name-option.selected { border-color: var(--curry); background: var(--curry-pale); }
+  .name-option-title { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
+  .name-option-reason { font-size: 11px; color: var(--muted); letter-spacing: 0.5px; }
+
+
+  .upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding: 24px 16px;
+    transition: all 0.2s;
+  }
+  .upload-zone:hover, .upload-zone.dragover { border-color: var(--curry); background: var(--curry-pale); }
+  .upload-zone.scanning { border-color: var(--curry); animation: borderPulse 1s ease infinite; }
+  @keyframes borderPulse { 0%,100% { border-color: var(--curry); } 50% { border-color: var(--curry-light); } }
+  .upload-icon { font-size: 28px; opacity: 0.6; }
+  .upload-text { font-size: 13px; color: var(--text); letter-spacing: 0.5px; }
+  .upload-hint { font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+  .scan-status { font-size: 12px; letter-spacing: 1px; padding: 8px 12px; border-radius: 4px; }
+  .scan-ok { background: rgba(76,175,125,0.1); color: var(--green); border: 1px solid rgba(76,175,125,0.2); }
+  .scan-err { background: rgba(224,90,90,0.1); color: var(--red); border: 1px solid rgba(224,90,90,0.2); }
+
+
+  #result h1, #result h2 { color: var(--curry); margin: 16px 0 8px; font-size: 15px; letter-spacing: 1px; }
+  #result h3 { color: var(--text); margin: 12px 0 6px; font-size: 13px; }
+  #result table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12px; }
+  #result th { background: var(--curry); color: #fff; padding: 8px 10px; text-align: left; }
+  #result td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  #result tr:nth-child(even) td { background: var(--surface2); }
+  #result code { background: var(--surface2); padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+  #result pre { background: var(--surface2); padding: 12px; border-radius: 4px; margin: 8px 0; font-size: 11px; overflow-x: auto; }
+  #result hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  #result strong { color: var(--text); font-weight: 500; }
+  #result ul, #result ol { padding-left: 20px; margin: 6px 0; }
+  #result li { margin: 4px 0; font-size: 13px; }
+  #result p { margin: 6px 0; font-size: 13px; line-height: 1.8; }
+
+  .tag {
+    display: inline-block;
+    background: var(--curry-pale);
+    color: var(--curry-light);
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-left: 8px;
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="logo">Menu Planner <span>外送菜單規劃助理</span></div>
+</header>
+
+<div class="container">
+  <div class="grid">
+
+    <!-- 左：店家資訊 -->
+    <div class="card">
+      <div class="card-title">店家資訊</div>
+
+      <div class="field">
+        <label>原始店名（輸入後可獲得外送平台店名建議）</label>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="originalName" placeholder="例：袋咖哩、老王便當">
+          <button class="btn-name" id="nameBtn" onclick="suggestName()">想店名</button>
+        </div>
+        <div id="nameSuggestions" style="display:none;margin-top:10px;"></div>
+      </div>
+
+      <div class="field">
+        <label>外送平台使用店名</label>
+        <input type="text" id="storeName" placeholder="填入原始店名或從上方選取建議">
+      </div>
+
+      <div class="field">
+        <label>平台抽成 %</label>
+        <input type="number" id="commission" value="35" min="0" max="100">
+      </div>
+
+      <div class="field">
+        <label>品牌風格</label>
+        <select id="style">
+          <option value="日系質感，簡潔精緻，有職人感">日系職人感</option>
+          <option value="台式親切，平價實在，CP值高">台式親切感</option>
+          <option value="輕食健康，清爽低負擔">輕食健康風</option>
+          <option value="街頭個性，有稜有角，直接有力">街頭個性風</option>
+          <option value="高端精緻，頂級食材，奢華享受">高端精緻風</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>品牌主張（選填）</label>
+        <input type="text" id="tagline" placeholder="例：好吃又沒有負擔">
+      </div>
+    </div>
+
+    <!-- 右：品項輸入 -->
+    <div class="card">
+      <div class="card-title">品項與售價</div>
+
+      <!-- 上傳區 -->
+      <div class="upload-zone" id="uploadZone" onclick="document.getElementById('menuFile').click()" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+        <div class="upload-icon">📷</div>
+        <div class="upload-text">上傳菜單圖片或PDF</div>
+        <div class="upload-hint">自動識別品項與價格｜拖曳或點擊上傳</div>
+        <input type="file" id="menuFile" accept="image/*,application/pdf" style="display:none" onchange="scanMenu(this.files[0])">
+      </div>
+      <div id="scanStatus" style="display:none;margin-bottom:12px;"></div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+        <span style="font-size:10px;color:var(--muted);letter-spacing:1px;">或手動輸入</span>
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+      </div>
+
+      <div class="items-header">
+        <span>品項名稱</span>
+        <span>售價（元）</span>
+        <span></span>
+      </div>
+
+      <div id="itemsList">
+        <div class="item-row">
+          <input type="text" class="item-name-input" placeholder="品項名稱">
+          <input type="number" class="item-price-input" placeholder="售價">
+          <button class="btn-remove" onclick="removeItem(this)">×</button>
+        </div>
+      </div>
+
+      <button class="btn-add" onclick="addItem()">＋ 新增品項</button>
+    </div>
+
+    <!-- 生成按鈕 -->
+    <div style="grid-column: 1 / -1;">
+      <button class="btn-generate" id="generateBtn" onclick="generate()">
+        生成菜單規劃
+      </button>
+    </div>
+
+    <!-- 輸出區 -->
+    <div class="output-wrap">
+      <div class="output-card">
+        <div class="output-header">
+          <div class="output-title">生成結果</div>
+          <button class="btn-copy" onclick="copyResult()" id="copyBtn" style="display:none">複製全部</button>
+        </div>
+        <div id="result">
+          <div class="placeholder">
+            <div class="placeholder-icon">🍛</div>
+            <div class="placeholder-text">填入資料後按「生成菜單規劃」</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const WORKER_URL = 'https://menu.helen12021202.workers.dev';
+
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.add('dragover');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file) scanMenu(file);
+}
+
+async function scanMenu(file) {
+  if (!file) return;
+  const zone = document.getElementById('uploadZone');
+  const status = document.getElementById('scanStatus');
+
+  zone.classList.add('scanning');
+  status.style.display = 'block';
+  status.className = 'scan-status loading';
+  status.innerHTML = '<div class="loading"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span>AI 正在識別菜單...</span></div>';
+
+  try {
+    // 讀取檔案為 base64
+    const base64 = await new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(r.result.split(',')[1]);
+      r.onerror = rej;
+      r.readAsDataURL(file);
+    });
+
+    const isImage = file.type.startsWith('image/');
+    const isPDF = file.type === 'application/pdf';
+
+    // 確保 media_type 正確
+    let mediaType = file.type;
+    if (mediaType === 'image/jpg') mediaType = 'image/jpeg';
+    if (!['image/jpeg','image/png','image/gif','image/webp'].includes(mediaType) && isImage) {
+      mediaType = 'image/jpeg';
+    }
+
+    let messageContent;
+    if (isImage) {
+      messageContent = [
+        { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
+        { type: 'text', text: '請識別這份菜單中所有品項與價格。只回傳JSON格式，不要其他文字：[{"name":"品項名稱","price":數字},...]。如果有多個價格選項，取主要售價。' }
+      ];
+    } else if (isPDF) {
+      messageContent = [
+        { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: base64 } },
+        { type: 'text', text: '請識別這份菜單中所有品項與價格。只回傳JSON格式，不要其他文字：[{"name":"品項名稱","price":數字},...]。如果有多個價格選項，取主要售價。' }
+      ];
+    }
+
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: messageContent }]
+      })
+    });
+
+    const data = await response.json();
+    // 顯示完整回傳結構 debug
+    const raw = data.content?.[0]?.text || JSON.stringify(data).substring(0, 500);
+
+    // 強化解析：多種格式容錯
+    let items = [];
+    try {
+      let clean = raw.replace(/```json|```/g, '').trim();
+      const match = clean.match(/\[[\s\S]*\]/);
+      if (match) clean = match[0];
+      items = JSON.parse(clean);
+    } catch(e) {
+      const lines = raw.split('\n');
+      lines.forEach(line => {
+        const priceMatch = line.match(/(.+?)[：:]\s*\$?(\d+)/);
+        if (priceMatch) {
+          items.push({ name: priceMatch[1].trim(), price: parseInt(priceMatch[2]) });
+        }
+      });
+    }
+
+    // 清空現有品項
+    const list = document.getElementById('itemsList');
+    list.innerHTML = '';
+
+    // 填入識別結果
+    items.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <input type="text" class="item-name-input" value="${item.name}" placeholder="品項名稱">
+        <input type="number" class="item-price-input" value="${item.price}" placeholder="售價">
+        <button class="btn-remove" onclick="removeItem(this)">×</button>
+      `;
+      list.appendChild(row);
+    });
+
+    zone.classList.remove('scanning');
+    zone.innerHTML = `<div class="upload-icon">✓</div><div class="upload-text">已識別 ${items.length} 個品項</div><div class="upload-hint">可手動調整下方品項內容</div><input type="file" id="menuFile" accept="image/*,application/pdf" style="display:none" onchange="scanMenu(this.files[0])">`;
+    status.className = 'scan-status scan-ok';
+    status.textContent = `成功識別 ${items.length} 個品項，請確認後調整`;
+    // debug
+    if (items.length === 0) {
+      status.className = 'scan-status scan-err';
+      status.innerHTML = 'AI原始回傳：' + raw.substring(0, 300);
+    }
+
+  } catch (err) {
+    zone.classList.remove('scanning');
+    status.className = 'scan-status scan-err';
+    status.textContent = '識別失敗，請確認圖片清晰或改用手動輸入';
+  }
+}
+
+async function suggestName() {
+  const originalName = document.getElementById('originalName').value.trim();
+  if (!originalName) { alert('請先填入原始店名'); return; }
+
+  const style = document.getElementById('style').value;
+  const btn = document.getElementById('nameBtn');
+  const box = document.getElementById('nameSuggestions');
+
+  btn.disabled = true;
+  btn.textContent = '想中...';
+  box.style.display = 'block';
+  box.innerHTML = `<div class="loading"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span>AI 正在想店名...</span></div>`;
+
+  const prompt = `你是外送平台品牌顧問。根據原始店名，幫這家店想5個適合外送平台的新店名。
+
+原始店名：${originalName}
+品牌風格：${style}
+
+要求：
+- 每個店名要有中文＋英文
+- 英文要好唸、有記憶點
+- 附一句說明命名邏輯（20字以內，口語化）
+- 不要太官腔，有個性
+
+只回傳JSON格式，不要其他文字：
+[
+  {"name": "中文店名 English Name", "reason": "命名邏輯說明"},
+  ...
+]`;
+
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await response.json();
+    const raw = data.content?.[0]?.text || '[]';
+    let suggestions = [];
+    try {
+      let clean = raw.replace(/```json|```/g, '').trim();
+      const match = clean.match(/\[[\s\S]*\]/);
+      if (match) clean = match[0];
+      suggestions = JSON.parse(clean);
+    } catch(e) {
+      // 解析失敗時顯示原始文字
+      box.innerHTML = '<div style="font-size:12px;color:var(--text);white-space:pre-wrap;">' + raw + '</div>';
+      btn.disabled = false;
+      btn.textContent = '想店名';
+      return;
+    }
+
+    if (!suggestions || suggestions.length === 0) {
+      box.innerHTML = '<div style="font-size:12px;color:red;">AI回傳內容：' + raw + '</div>';
+      btn.disabled = false;
+      btn.textContent = '想店名';
+      return;
+    }
+    box.innerHTML = '<div style="font-size:10px;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px;">點選喜歡的店名套用</div>';
+    suggestions.forEach(s => {
+      const div = document.createElement('div');
+      div.className = 'name-option';
+      div.innerHTML = `<div class="name-option-title">${s.name}</div><div class="name-option-reason">${s.reason}</div>`;
+      div.onclick = () => {
+        document.querySelectorAll('.name-option').forEach(el => el.classList.remove('selected'));
+        div.classList.add('selected');
+        document.getElementById('storeName').value = s.name;
+      };
+      box.appendChild(div);
+    });
+
+  } catch (err) {
+    box.innerHTML = `<div style="color:var(--red);font-size:12px;">生成失敗，請再試一次</div>`;
+  }
+
+  btn.disabled = false;
+  btn.textContent = '想店名';
+}
+
+function addItem() {
+  const list = document.getElementById('itemsList');
+  const row = document.createElement('div');
+  row.className = 'item-row';
+  row.innerHTML = `
+    <input type="text" class="item-name-input" placeholder="品項名稱">
+    <input type="number" class="item-price-input" placeholder="售價">
+    <button class="btn-remove" onclick="removeItem(this)">×</button>
+  `;
+  list.appendChild(row);
+}
+
+function removeItem(btn) {
+  const rows = document.querySelectorAll('.item-row');
+  if (rows.length > 1) btn.parentElement.remove();
+}
+
+function copyResult() {
+  const text = document.getElementById('result').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '已複製 ✓';
+    setTimeout(() => btn.textContent = '複製全部', 2000);
+  });
+}
+
+async function generate() {
+  const storeName = document.getElementById('storeName').value.trim();
+  const commission = document.getElementById('commission').value;
+  const style = document.getElementById('style').value;
+  const tagline = document.getElementById('tagline').value.trim();
+
+  const names = document.querySelectorAll('.item-name-input');
+  const prices = document.querySelectorAll('.item-price-input');
+
+  const items = [];
+  names.forEach((n, i) => {
+    if (n.value.trim() && prices[i].value) {
+      items.push({ name: n.value.trim(), price: parseInt(prices[i].value) });
+    }
+  });
+
+  if (!storeName) { alert('請填入店家名稱'); return; }
+  if (items.length === 0) { alert('請至少填入一個品項'); return; }
+
+  const btn = document.getElementById('generateBtn');
+  const result = document.getElementById('result');
+  const copyBtn = document.getElementById('copyBtn');
+
+  btn.disabled = true;
+  copyBtn.style.display = 'none';
+  result.innerHTML = `
+    <div class="loading">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <span>AI 正在規劃菜單...</span>
+    </div>
+  `;
+
+  const itemsList = items.map(i => `- ${i.name}：$${i.price}（老闆實拿 $${Math.round(i.price * (1 - commission/100))}）`).join('\n');
+
+  const prompt = `你是外送平台菜單顧問。請幫以下店家規劃菜單，用繁體中文回答。
+
+店家：${storeName}｜平台抽成：${commission}%｜風格：${style}
+${tagline ? `品牌主張：${tagline}` : ''}
+
+品項（售價｜老闆實拿）：
+${itemsList}
+
+請依序輸出以下四個區塊，每個區塊用一條橫線分隔，不要用井字號標題，改用【】標示區塊名稱：
+
+【分類建議】
+將品項分成2-4個分類，每個分類名稱要有吸引力，列出哪些品項屬於哪個分類。
+
+【品項文案】
+用表格列出每個品項：品項名稱｜售價｜老闆實拿｜平台描述（30字內，口語化，不要AI腔）
+
+【加購建議】
+建議1-2個加購選項，附建議售價。
+
+【店家簡介】
+80字以內，有個性，有故事感，不要官腔。`;
+
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await response.json();
+    const text = data.content?.[0]?.text || '生成失敗，請再試一次。';
+
+    result.innerHTML = marked.parse(text);
+    result.style.whiteSpace = 'normal';
+    copyBtn.style.display = 'block';
+
+  } catch (err) {
+    result.innerHTML = `<div style="color:var(--red);font-size:13px;">生成失敗：${err.message}</div>`;
+  }
+
+  btn.disabled = false;
+}
+</script>
+</body>
+</html>
