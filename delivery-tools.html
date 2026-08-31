@@ -42,6 +42,9 @@
     .footer{background:#153b36}.floatLine{background:var(--coral);border-radius:3px;box-shadow:none;padding:13px 18px}
     @media(max-width:900px){.heroGrid{padding:74px 0}.heroCopy{text-align:left}.lead{margin:0}.trust{justify-content:flex-start}.toolCase{gap:0}.contactCopy{text-align:left}}
     @media(max-width:620px){.nav{height:70px}.navLinks .cta{padding:10px 12px}.heroGrid{padding:58px 0}.hero h1{font-size:40px}.trust span{width:100%;border-left:0!important;padding-left:0!important}.calcCard,.auditCard,.auditResult,.toolCaseCopy,.caseNumbers,.form{padding:23px}.section{padding:74px 0}.sectionIntro{text-align:left}.sectionIntro h2{font-size:31px}.stepGrid{border-top:0}.step{border-right:0;border-top:1px solid var(--line);padding:24px 0}}
+    .hero:before{content:"";position:absolute;width:390px;height:390px;border:2px solid var(--gold);border-radius:50%;left:-205px;top:105px}.heroCopy{position:relative}.toolScene{margin-top:31px;display:flex;align-items:center;gap:19px;position:relative}.toolScene:after{content:"";position:absolute;width:110px;height:44px;border-top:2px dashed var(--coral);border-right:2px dashed var(--coral);border-radius:0 28px 0 0;left:128px;top:30px}.toolScene figure{width:122px;height:122px;margin:0;border-radius:50%;overflow:hidden;border:6px solid #fff;box-shadow:8px 9px 0 var(--gold);flex:none}.toolScene img{width:100%;height:100%;object-fit:cover;display:block}.toolScene p{max-width:220px!important;margin:0!important;color:#52615d!important;font-size:11px!important;font-weight:750}.toolScene p b{display:block;color:var(--green);font-size:14px;margin-bottom:4px}.calcCard{position:relative}.calcCard:after{content:"";position:absolute;width:78px;height:78px;border:1px solid var(--gold);border-radius:50%;right:-32px;top:-32px;z-index:-1}.sectionIntro h2:after{content:"";display:block;width:86px;height:12px;border-top:2px solid var(--coral);border-right:2px solid var(--coral);border-radius:0 14px 0 0;margin:23px auto 0}.photoCredit{display:block;margin-top:8px;font-size:9px;color:#718f84}.photoCredit a{color:#b7ccc5;text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:900px){.toolScene{justify-content:center}.heroCopy .toolScene p{text-align:left!important}}
+    @media(max-width:620px){.toolScene{justify-content:flex-start}.toolScene figure{width:104px;height:104px}.toolScene:after{width:80px;left:106px}.sectionIntro h2:after{margin-left:0}.calcCard:after{display:none}}
   </style>
 </head>
 <body>
@@ -59,6 +62,7 @@
           <h1>外送活動做下去，<br><span>每一單還剩多少？</span></h1>
           <p class="lead">別只看訂單變多。輸入售價、食材成本與活動條件，先算單筆概算，再決定活動要不要上。</p>
           <div class="trust"><span>✓ 不用先留電話</span><span>✓ 即時計算</span><span>✓ 免費頁面健檢</span></div>
+          <div class="toolScene"><figure><img src="https://images.unsplash.com/photo-1675150303909-1bb94e33132f?auto=format&amp;fit=crop&amp;w=500&amp;q=82" alt="餐桌上的亞洲餐點" loading="eager"></figure><p><b>從一份餐點開始算</b>把價格、食材與活動條件放在同一張帳上。</p></div>
         </div>
 
         <div class="calcCard" aria-live="polite">
@@ -139,7 +143,7 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="shell">競合智數股份有限公司｜<a href="tel:072621216">07-262-1216</a>｜<a href="mailto:17syn.comp@gmail.com">17syn.comp@gmail.com</a>｜外送＋並非 Uber Eats 官方單位</div></footer>
+  <footer class="footer"><div class="shell">競合智數股份有限公司｜<a href="tel:072621216">07-262-1216</a>｜<a href="mailto:17syn.comp@gmail.com">17syn.comp@gmail.com</a>｜外送＋並非 Uber Eats 官方單位<span class="photoCredit">照片：<a href="https://unsplash.com/photos/a-wooden-table-topped-with-bowls-of-food-FVGzf1H5Oyw" target="_blank" rel="noopener">Alexandra Tran／Unsplash</a></span></div></footer>
   <a class="floatLine" href="https://lin.ee/n89gZhu" target="_blank" rel="noopener" onclick="trackEvent('contact_click',{method:'line'})">LINE 免費詢問</a>
 
   <script>
