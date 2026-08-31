@@ -32,6 +32,9 @@
     .footer{background:#153b36}.floatLine{background:var(--coral);border-radius:3px;box-shadow:none;padding:13px 18px}
     @media(max-width:900px){.heroGrid{padding:74px 0}.heroCopy{text-align:left}.lead{margin:0}.priceLine,.heroActions{justify-content:flex-start}.serviceGrid{grid-template-columns:1fr 1fr}.service:nth-child(3){border-left:0}.planCase{gap:0}.contactCopy{text-align:left}}
     @media(max-width:620px){.nav{height:70px}.navLinks .cta{padding:10px 12px}.heroGrid{padding:58px 0}.hero h1{font-size:40px}.offerCard,.planCaseCopy,.caseProof,.clarityCard,.form{padding:23px}.section{padding:74px 0}.sectionIntro{text-align:left}.sectionIntro h2,.explainCopy h2{font-size:31px}.serviceGrid{grid-template-columns:1fr}.service+.service{border-left:0}.processGrid{border-top:0}.step{border-right:0;border-top:1px solid var(--line);padding:24px 0}}
+    .hero:before{content:"";position:absolute;width:430px;height:430px;border:2px solid var(--gold);border-radius:50%;right:-150px;top:-120px}.heroCopy{position:relative}.heroCopy:after{content:"";position:absolute;width:72px;height:72px;background:var(--coral);border-radius:50%;right:10px;bottom:-18px;opacity:.9}.offerCard{position:relative;overflow:visible}.offerCard:before{content:"";position:absolute;width:150px;height:70px;border-top:2px dashed var(--green);border-right:2px dashed var(--green);border-radius:0 36px 0 0;left:-82px;bottom:50px;z-index:-1}.offerPhoto{height:165px;margin:19px 0 22px;border-radius:88px;overflow:hidden;border:7px solid #fff;box-shadow:9px 10px 0 var(--gold);position:relative}.offerPhoto img{width:100%;height:100%;object-fit:cover;display:block}.offerPhoto figcaption{position:absolute;left:24px;bottom:16px;background:#fff;color:var(--ink);padding:7px 11px;border-left:3px solid var(--coral);font-size:10px;font-weight:850}.sectionIntro h2:after,.explainCopy h2:after{content:"";display:block;width:86px;height:12px;border-top:2px solid var(--coral);border-right:2px solid var(--coral);border-radius:0 14px 0 0;margin:23px auto 0}.explainCopy h2:after{margin-left:0}.service{position:relative;overflow:hidden}.service:after{content:"";position:absolute;width:74px;height:74px;border:1px solid var(--line);border-radius:50%;right:-35px;bottom:-35px}.planCaseCopy{position:relative}.planCaseCopy:after{content:"";position:absolute;width:105px;height:105px;border:2px solid var(--gold);border-radius:50%;right:-52px;top:36px}.photoCredit{display:block;margin-top:8px;font-size:9px;color:#718f84}.photoCredit a{color:#b7ccc5;text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:900px){.heroCopy:after{right:8%;bottom:-35px}.offerCard:before{display:none}}
+    @media(max-width:620px){.heroCopy:after{width:52px;height:52px;bottom:-30px}.offerPhoto{height:135px;border-width:5px;box-shadow:6px 7px 0 var(--gold)}.sectionIntro h2:after{margin-left:0}.planCaseCopy:after{display:none}}
   </style>
 </head>
 <body>
@@ -56,6 +59,7 @@
         <div class="offerCard">
           <div class="offerTop"><div><span class="offerBadge">起價方案方向</span><h2>外送基本建置</h2></div></div>
           <p>網站先呈現基本合作內容，專人會再依店家實際需要確認。</p>
+          <figure class="offerPhoto"><img src="https://images.unsplash.com/photo-1755494541391-a8a55ed860f4?auto=format&amp;fit=crop&amp;w=1000&amp;q=82" alt="桌上擺放多道亞洲餐點" loading="eager"><figcaption>菜單、影像與品牌一起整理</figcaption></figure>
           <ul class="included"><li><span>✓</span>外送帳號申請與資料準備協助</li><li><span>✓</span>基本菜單分類與品項建置</li><li><span>✓</span>影像服務 1 組（固定 6 張）</li><li><span>✓</span>可選餐點拍攝或既有照片精修</li><li><span>✓</span>品牌封面與上線流程協助</li><li><span>✓</span>依確認內容安排所需設備與營運服務</li></ul>
           <div class="offerNote"><b>起價不代表每間店的最終總額</b>正式合作前，會以書面說明完整含稅總額、平台相關費用、設備、服務期間及付款方式。</div>
         </div>
@@ -111,7 +115,7 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="shell">競合智數股份有限公司｜<a href="tel:072621216">07-262-1216</a>｜<a href="mailto:17syn.comp@gmail.com">17syn.comp@gmail.com</a>｜外送＋並非 Uber Eats 官方單位</div></footer>
+  <footer class="footer"><div class="shell">競合智數股份有限公司｜<a href="tel:072621216">07-262-1216</a>｜<a href="mailto:17syn.comp@gmail.com">17syn.comp@gmail.com</a>｜外送＋並非 Uber Eats 官方單位<span class="photoCredit">照片：<a href="https://unsplash.com/photos/a-table-filled-with-various-delicious-asian-dishes-_stQKOlfl7M" target="_blank" rel="noopener">Hailey Tong／Unsplash</a></span></div></footer>
   <a class="floatLine" href="https://lin.ee/n89gZhu" target="_blank" rel="noopener" onclick="trackEvent('contact_click',{method:'line'})">LINE 取得報價</a>
 
   <script>
