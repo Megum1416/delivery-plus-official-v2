@@ -14,13 +14,31 @@
     .caseSection{background:#f7faf8}.planCase{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}.planCaseCopy{padding:34px}.caseBadge{display:inline-flex;background:#eaf8f1;color:var(--green);border-radius:100px;padding:7px 11px;font-size:10px;font-weight:900}.planCaseCopy h3{font-size:29px;line-height:1.3;margin:16px 0 8px}.planCaseCopy>p{font-size:13px;color:var(--muted);margin:0 0 19px}.caseActions{display:grid;gap:8px;margin:0 0 23px}.caseActions span{font-size:12px;font-weight:800}.caseProof{background:linear-gradient(145deg,#123e32,#092d25);color:#fff;padding:34px;display:flex;flex-direction:column;justify-content:center}.caseProof small{color:#9fb9af;font-size:10px}.caseMetric{border-bottom:1px solid #ffffff14;padding:17px 0}.caseMetric:last-of-type{border-bottom:0}.caseMetric span{display:block;color:#a9c2b8;font-size:11px}.caseMetric strong{display:block;color:#70e1a5;font-size:31px;line-height:1.2;margin-top:4px}.caseDisclaimer{font-size:10px;color:#71817c;text-align:center;line-height:1.7;margin:18px auto 0;max-width:900px}
     @media(max-width:900px){.heroGrid,.priceExplain,.planCase,.contactGrid{grid-template-columns:1fr}.heroGrid{padding:65px 0}.heroCopy{text-align:center}.lead{margin:auto}.priceLine,.heroActions{justify-content:center}.serviceGrid,.processGrid{grid-template-columns:1fr 1fr}.contactCopy{text-align:center}}
     @media(max-width:620px){.shell{width:min(100% - 26px,1120px)}.navLinks a:not(.cta){display:none}.brand small{display:none}.heroGrid{gap:38px}.hero h1{font-size:39px}.heroActions{flex-direction:column}.priceLine strong{font-size:37px}.offerCard,.clarityCard,.form{padding:21px}.section{padding:65px 0}.sectionIntro h2,.explainCopy h2{font-size:31px}.serviceGrid,.processGrid,.formGrid{grid-template-columns:1fr}.full{grid-column:auto}.floatLine{display:none}}
+
+    /* 2026 editorial redesign — flat, warm and conversion focused */
+    :root{--ink:#18322f;--green:#176b61;--green2:#176b61;--mint:#edf3ee;--line:#d8ddd8;--muted:#66736e;--dark:#163d38;--white:#fff;--coral:#e86f61;--gold:#f0c875;--cream:#f5f1e8;--shadow:none}
+    body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",Arial,sans-serif}.demo{display:none}
+    .nav{height:82px;border-bottom:1px solid var(--line);background:#fff}.brand b{font-size:27px;letter-spacing:-1.5px}.brand b span{color:var(--coral)}.brand small{border-color:var(--line);color:#78817d}.navLinks{gap:25px}.navLinks a{font-size:12px;letter-spacing:.03em;color:#354743}.navLinks .current{color:var(--coral);font-weight:900}.navLinks .cta{background:var(--coral);border-radius:3px;padding:12px 18px}
+    .hero{background:var(--cream)}.hero:after{display:none}.heroGrid{min-height:630px;grid-template-columns:1fr .9fr;gap:78px}.eyebrow{display:inline-block;background:transparent;border:0;border-left:4px solid var(--coral);border-radius:0;padding:2px 0 2px 11px;color:var(--green);font-size:11px;letter-spacing:.12em}.hero h1{font-size:clamp(43px,5vw,66px);line-height:1.12;margin:25px 0 21px}.lead{font-size:16px;line-height:1.9;color:#52615d}
+    .priceLine{margin-top:30px}.priceLine strong{font-size:46px}.priceHint{max-width:580px}.button{border-radius:3px;padding:14px 20px;letter-spacing:.03em}.button.secondary{border-color:#9eb6ae;background:transparent}
+    .offerCard{border:1px solid var(--line);border-top:5px solid var(--green);border-radius:0;box-shadow:none;padding:35px}.offerTop>span:last-child{display:none}.offerBadge,.caseBadge{display:inline-block;background:transparent;border-radius:0;border-left:3px solid var(--gold);padding:1px 0 1px 9px;color:#6b5424;letter-spacing:.08em}.offerNote{background:#f1efe8;border-radius:0;border-left:4px solid var(--gold);padding:15px}
+    .section{padding:104px 0}.sectionAlt{background:#faf8f3}.sectionIntro{margin-bottom:48px}.sectionIntro small{color:var(--coral);font-size:10px;letter-spacing:.2em}.sectionIntro h2{font-size:37px;letter-spacing:-.025em;margin:13px 0}.sectionIntro p{font-size:14px}
+    .serviceGrid{gap:0}.service{border:0;border-top:4px solid var(--green);border-radius:0;padding:28px 25px 30px}.service:nth-child(2){border-top-color:var(--coral)}.service:nth-child(3){border-top-color:var(--gold)}.service:nth-child(4){border-top-color:#7ca29a}.service+ .service{border-left:1px solid var(--line)}.service>span{display:none}.service:before{display:block;color:var(--coral);font-size:12px;font-weight:900;letter-spacing:.12em;margin-bottom:17px}.service:nth-child(1):before{content:"01"}.service:nth-child(2):before{content:"02"}.service:nth-child(3):before{content:"03"}.service:nth-child(4):before{content:"04"}
+    .caseSection{background:#faf8f3}.planCase{gap:0;border-radius:0;box-shadow:none}.planCaseCopy{padding:40px;border-top:5px solid var(--coral)}.caseProof{background:var(--green);padding:40px}.caseMetric strong{color:#fff}.caseProof small,.caseMetric span{color:#cee0db}
+    .priceExplain{gap:70px}.explainCopy h2{font-size:38px}.clarityCard{background:var(--green);border-radius:0;padding:34px}.clarityList{gap:0}.clarityItem{grid-template-columns:32px 1fr;background:transparent;border:0;border-bottom:1px solid #ffffff2e;border-radius:0;padding:15px 0}.clarityItem span{display:none}.clarityItem:before{display:block;color:var(--gold);font-size:11px;font-weight:900}.clarityItem:nth-child(1):before{content:"01"}.clarityItem:nth-child(2):before{content:"02"}.clarityItem:nth-child(3):before{content:"03"}.clarityItem:nth-child(4):before{content:"04"}.notice{border-radius:0;border:0;border-left:4px solid var(--gold);background:#f7f2e6}
+    .processGrid{gap:0;border-top:1px solid var(--line)}.step{border:0;border-right:1px solid var(--line);border-radius:0;padding:29px}.step:last-child{border-right:0}.step b{display:block;width:auto;height:auto;background:transparent;color:var(--coral);border-radius:0;text-align:left;letter-spacing:.12em}
+    .faq{gap:0;border-top:1px solid var(--line)}.faq details{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:21px 2px}.faq summary{font-size:14px}
+    .contact{background:var(--green)}.contact .eyebrow{color:#fff;border-left-color:var(--gold)}.contactGrid{gap:70px}.contactCopy p{color:#d4e4df}.form{border-radius:0;border-top:5px solid var(--gold);padding:34px}.field input,.field select,.field textarea{border:1px solid #cdd3cf;border-radius:2px;background:#fff;padding:12px 13px}.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 2px #176b6120}.formButton{background:var(--coral)}
+    .footer{background:#153b36}.floatLine{background:var(--coral);border-radius:3px;box-shadow:none;padding:13px 18px}
+    @media(max-width:900px){.heroGrid{padding:74px 0}.heroCopy{text-align:left}.lead{margin:0}.priceLine,.heroActions{justify-content:flex-start}.serviceGrid{grid-template-columns:1fr 1fr}.service:nth-child(3){border-left:0}.planCase{gap:0}.contactCopy{text-align:left}}
+    @media(max-width:620px){.nav{height:70px}.navLinks .cta{padding:10px 12px}.heroGrid{padding:58px 0}.hero h1{font-size:40px}.offerCard,.planCaseCopy,.caseProof,.clarityCard,.form{padding:23px}.section{padding:74px 0}.sectionIntro{text-align:left}.sectionIntro h2,.explainCopy h2{font-size:31px}.serviceGrid{grid-template-columns:1fr}.service+.service{border-left:0}.processGrid{border-top:0}.step{border-right:0;border-top:1px solid var(--line);padding:24px 0}}
   </style>
 </head>
 <body>
   <div class="demo">資訊部門展示　｜　<a href="外送加-官網改版展示.html">主官網</a>　｜　<a href="delivery-tools.html">工具廣告頁</a>　｜　<b>方案廣告頁</b>　｜　表單不會真的送出</div>
   <nav class="nav shell" aria-label="主要選單">
     <a class="brand" href="外送加-官網改版展示.html"><b>外送<span>＋</span></b><small>競合智數</small></a>
-    <div class="navLinks"><a href="#services">服務內容</a><a href="#case">成功案例</a><a href="#pricing">費用說明</a><a href="#faq">常見問題</a><a href="delivery-tools.html">免費工具</a><a class="cta" href="#contact" onclick="trackEvent('cta_click',{location:'nav'})">取得完整報價</a></div>
+    <div class="navLinks"><a href="外送加-官網改版展示.html">首頁</a><a href="delivery-tools.html">免費工具</a><a class="current" href="#services">服務方案</a><a href="#case">成功案例</a><a href="#faq">常見問題</a><a class="cta" href="#contact" onclick="trackEvent('cta_click',{location:'nav'})">取得完整報價</a></div>
   </nav>
 
   <main>
@@ -36,7 +54,7 @@
         </div>
 
         <div class="offerCard">
-          <div class="offerTop"><div><span class="offerBadge">🌱 起價方案方向</span><h2>外送基本建置</h2></div><span>🚀</span></div>
+          <div class="offerTop"><div><span class="offerBadge">起價方案方向</span><h2>外送基本建置</h2></div></div>
           <p>網站先呈現基本合作內容，專人會再依店家實際需要確認。</p>
           <ul class="included"><li><span>✓</span>外送帳號申請與資料準備協助</li><li><span>✓</span>基本菜單分類與品項建置</li><li><span>✓</span>影像服務 1 組（固定 6 張）</li><li><span>✓</span>可選餐點拍攝或既有照片精修</li><li><span>✓</span>品牌封面與上線流程協助</li><li><span>✓</span>依確認內容安排所需設備與營運服務</li></ul>
           <div class="offerNote"><b>起價不代表每間店的最終總額</b>正式合作前，會以書面說明完整含稅總額、平台相關費用、設備、服務期間及付款方式。</div>
@@ -53,7 +71,7 @@
         <div class="sectionIntro"><small>匿名真實案例</small><h2>全新品牌，也能從零開始建立</h2><p>新帳號不只要完成申請，店名、定位、菜單與主打餐點也要一起規劃，顧客才看得懂、記得住。</p></div>
         <div class="planCase">
           <article class="planCaseCopy">
-            <span class="caseBadge">🍚 全新日式丼飯品牌</span>
+            <span class="caseBadge">全新日式丼飯品牌</span>
             <h3>從沒有店名、菜單與訂單開始</h3>
             <p>團隊依產品特色建立品牌定位，聚焦鮭魚炊飯等主打品，再規劃菜單視覺與平台營運方向。</p>
             <div class="caseActions"><span>✓ 從零建立品牌名稱與定位</span><span>✓ 讓主打餐點形成清楚記憶點</span><span>✓ 菜單、視覺與廣告方向一起規劃</span></div>
@@ -94,7 +112,7 @@
   </main>
 
   <footer class="footer"><div class="shell">競合智數股份有限公司｜<a href="tel:072621216">07-262-1216</a>｜<a href="mailto:17syn.comp@gmail.com">17syn.comp@gmail.com</a>｜外送＋並非 Uber Eats 官方單位</div></footer>
-  <a class="floatLine" href="https://lin.ee/n89gZhu" target="_blank" rel="noopener" onclick="trackEvent('contact_click',{method:'line'})">💬 LINE 取得報價</a>
+  <a class="floatLine" href="https://lin.ee/n89gZhu" target="_blank" rel="noopener" onclick="trackEvent('contact_click',{method:'line'})">LINE 取得報價</a>
 
   <script>
     window.dataLayer=window.dataLayer||[];
