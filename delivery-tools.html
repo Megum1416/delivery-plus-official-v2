@@ -14,27 +14,55 @@
     .caseSection{background:#fff}.toolCase{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:stretch}.toolCaseCopy,.caseNumbers{border:1px solid var(--line);border-radius:22px;padding:30px}.toolCaseCopy{background:linear-gradient(145deg,#f9fdfb,#edf9f3)}.caseBadge{display:inline-flex;background:#dff4e9;color:var(--green);border-radius:100px;padding:7px 11px;font-size:10px;font-weight:900}.toolCaseCopy h3{font-size:28px;line-height:1.3;margin:16px 0 9px}.toolCaseCopy p{font-size:13px;color:var(--muted);margin:0 0 18px}.caseChanges{display:grid;gap:8px;margin:0 0 21px}.caseChanges span{font-size:12px;font-weight:800}.caseNumbers{background:linear-gradient(145deg,#123c31,#092c24);color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:center}.caseNumber{background:#ffffff0b;border:1px solid #ffffff10;border-radius:15px;padding:22px}.caseNumber span{display:block;color:#a9c3b9;font-size:11px}.caseNumber strong{display:block;color:#70e1a5;font-size:29px;line-height:1.2;margin:7px 0}.caseNumber small{color:#809e93;font-size:9px}.caseDisclaimer{font-size:10px;color:#71817c;text-align:center;line-height:1.7;margin:18px auto 0;max-width:900px}
     @media(max-width:900px){.heroGrid,.auditWrap,.toolCase,.contactGrid{grid-template-columns:1fr}.heroGrid{padding:65px 0}.heroCopy{text-align:center}.lead{margin:auto}.trust{justify-content:center}.stepGrid{grid-template-columns:1fr}.contactCopy{text-align:center}}
     @media(max-width:620px){.shell{width:min(100% - 26px,1120px)}.navLinks a:not(.cta){display:none}.brand small{display:none}.heroGrid{gap:35px}.hero h1{font-size:39px}.calcCard,.auditCard,.auditResult,.form{padding:21px}.inputGrid,.resultGrid,.auditList,.formGrid{grid-template-columns:1fr}.full{grid-column:auto}.section{padding:65px 0}.sectionIntro h2{font-size:31px}.floatLine{display:none}}
+
+    /* 2026 editorial redesign — flat, warm and conversion focused */
+    :root{--ink:#18322f;--green:#176b61;--green2:#176b61;--mint:#edf3ee;--line:#d8ddd8;--muted:#66736e;--dark:#163d38;--white:#fff;--coral:#e86f61;--gold:#f0c875;--cream:#f5f1e8;--shadow:none}
+    body{background:#fff;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",Arial,sans-serif}
+    .demo{display:none}
+    .nav{height:82px;border-bottom:1px solid var(--line);background:#fff}
+    .brand b{font-size:27px;letter-spacing:-1.5px}.brand b span{color:var(--coral)}
+    .brand small{border-color:var(--line);color:#78817d}.navLinks{gap:25px}.navLinks a{font-size:12px;letter-spacing:.03em;color:#354743}
+    .navLinks .current{color:var(--coral);font-weight:900}.navLinks .cta{background:var(--coral);border-radius:3px;padding:12px 18px;color:#fff}
+    .hero{background:var(--cream);border:0}.hero:after{display:none}.heroGrid{min-height:620px;grid-template-columns:.88fr 1.12fr;gap:74px}
+    .eyebrow{display:inline-block;background:transparent;border:0;border-left:4px solid var(--coral);border-radius:0;padding:2px 0 2px 11px;color:var(--green);font-size:11px;letter-spacing:.12em}
+    .hero h1{font-size:clamp(43px,5vw,66px);line-height:1.12;margin:25px 0 21px}.hero h1 span{color:var(--green)}.lead{font-size:16px;line-height:1.9;color:#52615d}
+    .trust{margin-top:29px;gap:0}.trust span{background:transparent;border:0;border-radius:0;padding:7px 17px 7px 0;margin-right:17px;font-size:11px}.trust span+span{border-left:1px solid #c9cec7;padding-left:17px}
+    .calcCard{border:1px solid var(--line);border-top:5px solid var(--green);border-radius:0;padding:34px;box-shadow:none}.calcHead>span:last-child{display:none}
+    .badge,.caseBadge{display:inline-block;background:transparent;border-radius:0;border-left:3px solid var(--gold);padding:1px 0 1px 9px;color:#6b5424;letter-spacing:.08em}
+    .calcCard h2{font-size:25px;margin:8px 0}.field label{font-size:11px;letter-spacing:.03em}.field input,.field select,.field textarea{border:1px solid #cdd3cf;border-radius:2px;background:#fff;padding:12px 13px}.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 2px #176b6120}
+    .metric{background:#f2f3ef;border-radius:0;border-top:2px solid var(--gold);padding:13px}.metric strong{color:var(--green)}
+    .resultStatus{border-radius:0;background:var(--green);padding:15px}.resultStatus strong{color:#fff}.resultStatus span{color:#dbe8e4}
+    .button{border-radius:3px;background:var(--green);padding:14px 20px;letter-spacing:.03em}.calcButton{background:var(--coral)}
+    .section{padding:104px 0}.sectionIntro{margin-bottom:48px}.sectionIntro small{color:var(--coral);font-size:10px;letter-spacing:.2em}.sectionIntro h2{font-size:37px;letter-spacing:-.025em;margin:13px 0}.sectionIntro p{font-size:14px}
+    .auditCard,.auditResult{border-radius:0;padding:34px}.auditCard{border-top:4px solid var(--gold)}.auditItem label{border-radius:2px;background:#fff;min-height:70px}.auditItem input:checked+label{background:#edf3ee;border-color:var(--green)}
+    .auditResult{background:var(--green)}.ring:after{background:var(--green)}.priorities li{border-radius:0;border-bottom:1px solid #ffffff24;background:transparent;padding:10px 0}.auditButton{background:var(--coral);color:#fff}
+    .caseSection{background:#faf8f3}.toolCase{gap:0}.toolCaseCopy,.caseNumbers{border-radius:0;padding:38px}.toolCaseCopy{background:#fff;border-top:5px solid var(--coral)}.caseNumbers{background:var(--green);border:0}.caseNumber{background:transparent;border:0;border-radius:0;border-bottom:1px solid #ffffff2b;padding:20px 0}.caseNumber strong{color:#fff}.caseNumber span,.caseNumber small{color:#cae0da}
+    .steps{background:#fff}.stepGrid{gap:0;border-top:1px solid var(--line)}.step{border:0;border-right:1px solid var(--line);border-radius:0;padding:30px}.step:last-child{border-right:0}.step span{width:auto;height:auto;display:block;background:transparent;border-radius:0;color:var(--coral);font-size:13px;letter-spacing:.12em}
+    .contact{background:var(--green)}.contact .eyebrow{color:#fff;border-left-color:var(--gold)}.contactGrid{gap:70px}.form{border-radius:0;border-top:5px solid var(--gold);padding:34px}.contactCopy p{color:#d4e4df}
+    .footer{background:#153b36}.floatLine{background:var(--coral);border-radius:3px;box-shadow:none;padding:13px 18px}
+    @media(max-width:900px){.heroGrid{padding:74px 0}.heroCopy{text-align:left}.lead{margin:0}.trust{justify-content:flex-start}.toolCase{gap:0}.contactCopy{text-align:left}}
+    @media(max-width:620px){.nav{height:70px}.navLinks .cta{padding:10px 12px}.heroGrid{padding:58px 0}.hero h1{font-size:40px}.trust span{width:100%;border-left:0!important;padding-left:0!important}.calcCard,.auditCard,.auditResult,.toolCaseCopy,.caseNumbers,.form{padding:23px}.section{padding:74px 0}.sectionIntro{text-align:left}.sectionIntro h2{font-size:31px}.stepGrid{border-top:0}.step{border-right:0;border-top:1px solid var(--line);padding:24px 0}}
   </style>
 </head>
 <body>
   <div class="demo">資訊部門展示　｜　<a href="外送加-官網改版展示.html">主官網</a>　｜　<b>工具廣告頁</b>　｜　<a href="uber-eats-plan.html">方案廣告頁</a>　｜　表單不會真的送出</div>
   <nav class="nav shell" aria-label="主要選單">
     <a class="brand" href="外送加-官網改版展示.html"><b>外送<span>＋</span></b><small>競合智數</small></a>
-    <div class="navLinks"><a href="#margin">毛利試算</a><a href="#audit">頁面健檢</a><a href="#case">真實案例</a><a href="外送加-官網改版展示.html">了解服務</a><a class="cta" href="#contact" onclick="trackEvent('cta_click',{location:'nav'})">免費請專人評估</a></div>
+    <div class="navLinks"><a href="外送加-官網改版展示.html">首頁</a><a class="current" href="#margin">免費工具</a><a href="uber-eats-plan.html">服務方案</a><a href="#case">成果案例</a><a href="外送加-官網改版展示.html#process">合作流程</a><a class="cta" href="#contact" onclick="trackEvent('cta_click',{location:'nav'})">免費請專人評估</a></div>
   </nav>
 
   <main>
     <section class="hero" id="margin">
       <div class="shell heroGrid">
         <div class="heroCopy">
-          <span class="eyebrow">📊 餐飲老闆免費工具</span>
+          <span class="eyebrow">餐飲老闆免費工具</span>
           <h1>外送活動做下去，<br><span>每一單還剩多少？</span></h1>
           <p class="lead">別只看訂單變多。輸入售價、食材成本與活動條件，先算單筆概算，再決定活動要不要上。</p>
           <div class="trust"><span>✓ 不用先留電話</span><span>✓ 即時計算</span><span>✓ 免費頁面健檢</span></div>
         </div>
 
         <div class="calcCard" aria-live="polite">
-          <div class="calcHead"><div><span class="badge">免費試算</span><h2>活動毛利計算器</h2></div><span>🧮</span></div>
+          <div class="calcHead"><div><span class="badge">免費試算</span><h2>活動毛利計算器</h2></div></div>
           <p>輸入店家自己的實際條件，結果會自動更新。</p>
           <div class="inputGrid">
             <div class="field"><label for="price">商品售價（元）</label><input id="price" type="number" min="0" value="250" oninput="calculateMargin()"></div>
@@ -83,7 +111,7 @@
         <div class="sectionIntro"><small>匿名真實案例</small><h2>頁面問題找對，改善才有方向</h2><p>不是只把照片換漂亮，而是先看顧客能不能快速理解主打餐點，再決定菜單與廣告怎麼調整。</p></div>
         <div class="toolCase">
           <article class="toolCaseCopy">
-            <span class="caseBadge">🍲 中式料理／火鍋店</span>
+            <span class="caseBadge">中式料理／火鍋店</span>
             <h3>原本排序靠後，主打餐點也說不清楚</h3>
             <p>團隊先找出頁面最主要的理解障礙，再把資源集中在能影響顧客選擇的地方。</p>
             <div class="caseChanges"><span>✓ 聚焦最有辨識度的主打品</span><span>✓ 重新整理頁面溝通順序</span><span>✓ 依店家狀況調整廣告配置</span></div>
@@ -100,7 +128,7 @@
     </section>
 
     <section class="section steps">
-      <div class="shell"><div class="sectionIntro"><small>算完之後</small><h2>結果不是答案，而是下一步</h2></div><div class="stepGrid"><article class="step"><span>1️⃣</span><h3>先看出缺口</h3><p>確認是成本、照片、菜單或活動條件影響目前表現。</p></article><article class="step"><span>2️⃣</span><h3>取得專人建議</h3><p>把工具結果帶進表單，讓顧問先了解店家目前狀況。</p></article><article class="step"><span>3️⃣</span><h3>需要再合作</h3><p>專人提供服務內容及完整含稅報價，確認清楚後再決定。</p></article></div></div>
+      <div class="shell"><div class="sectionIntro"><small>算完之後</small><h2>結果不是答案，而是下一步</h2></div><div class="stepGrid"><article class="step"><span>01</span><h3>先看出缺口</h3><p>確認是成本、照片、菜單或活動條件影響目前表現。</p></article><article class="step"><span>02</span><h3>取得專人建議</h3><p>把工具結果帶進表單，讓顧問先了解店家目前狀況。</p></article><article class="step"><span>03</span><h3>需要再合作</h3><p>專人提供服務內容及完整含稅報價，確認清楚後再決定。</p></article></div></div>
     </section>
 
     <section class="section contact" id="contact">
@@ -112,7 +140,7 @@
   </main>
 
   <footer class="footer"><div class="shell">競合智數股份有限公司｜<a href="tel:072621216">07-262-1216</a>｜<a href="mailto:17syn.comp@gmail.com">17syn.comp@gmail.com</a>｜外送＋並非 Uber Eats 官方單位</div></footer>
-  <a class="floatLine" href="https://lin.ee/n89gZhu" target="_blank" rel="noopener" onclick="trackEvent('contact_click',{method:'line'})">💬 LINE 免費詢問</a>
+  <a class="floatLine" href="https://lin.ee/n89gZhu" target="_blank" rel="noopener" onclick="trackEvent('contact_click',{method:'line'})">LINE 免費詢問</a>
 
   <script>
     window.dataLayer=window.dataLayer||[];
