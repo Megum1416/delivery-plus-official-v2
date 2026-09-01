@@ -37,13 +37,16 @@
     .hero:before{content:"";position:absolute;width:430px;height:430px;border:2px solid var(--gold);border-radius:50%;right:-150px;top:-120px}.heroCopy{position:relative}.heroCopy:after{content:"";position:absolute;width:72px;height:72px;background:var(--coral);border-radius:50%;right:10px;bottom:-18px;opacity:.9}.offerCard{position:relative;overflow:visible}.offerCard:before{content:"";position:absolute;width:150px;height:70px;border-top:2px dashed var(--green);border-right:2px dashed var(--green);border-radius:0 36px 0 0;left:-82px;bottom:50px;z-index:-1}.offerPhoto{height:165px;margin:19px 0 22px;border-radius:88px;overflow:hidden;border:7px solid #fff;box-shadow:9px 10px 0 var(--gold);position:relative}.offerPhoto img{width:100%;height:100%;object-fit:cover;display:block}.offerPhoto figcaption{position:absolute;left:24px;bottom:16px;background:#fff;color:var(--ink);padding:7px 11px;border-left:3px solid var(--coral);font-size:10px;font-weight:850}.sectionIntro h2:after,.explainCopy h2:after{content:"";display:block;width:86px;height:12px;border-top:2px solid var(--coral);border-right:2px solid var(--coral);border-radius:0 14px 0 0;margin:23px auto 0}.explainCopy h2:after{margin-left:0}.service{position:relative;overflow:hidden}.service:after{content:"";position:absolute;width:74px;height:74px;border:1px solid var(--line);border-radius:50%;right:-35px;bottom:-35px}.planCaseCopy{position:relative}.planCaseCopy:after{content:"";position:absolute;width:105px;height:105px;border:2px solid var(--gold);border-radius:50%;right:-52px;top:36px}.photoCredit{display:block;margin-top:8px;font-size:9px;color:#718f84}.photoCredit a{color:#b7ccc5;text-decoration:underline;text-underline-offset:3px}
     @media(max-width:900px){.heroCopy:after{right:8%;bottom:-35px}.offerCard:before{display:none}}
     @media(max-width:620px){.heroCopy:after{width:52px;height:52px;bottom:-30px}.offerPhoto{height:135px;border-width:5px;box-shadow:6px 7px 0 var(--gold)}.sectionIntro h2:after{margin-left:0}.planCaseCopy:after{display:none}}
+    html{scroll-padding-top:90px}body{overflow-x:hidden}.scrollProgress{position:fixed;left:0;top:0;width:100%;height:4px;background:var(--coral);transform:scaleX(0);transform-origin:left;z-index:100}.nav{position:sticky;top:0;z-index:60;background:#fffffff2;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px)}.heroCopy>*{animation:planRise .72s both}.heroCopy>*:nth-child(2){animation-delay:.08s}.heroCopy>*:nth-child(3){animation-delay:.16s}.heroCopy>*:nth-child(4){animation-delay:.24s}.heroCopy>*:nth-child(5){animation-delay:.3s}.heroCopy>*:nth-child(6){animation-delay:.36s}.heroCopy:after{animation:orbDrift 4.5s ease-in-out infinite alternate}.offerCard{animation:cardEnter .9s .2s both}.offerPhoto img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}.offerPhoto:hover img{transform:scale(1.07)}.offerCard:before{animation:linePulse 2.4s ease-in-out infinite}.service,.step,.clarityItem,.faq details{transition:transform .3s ease,background .3s ease}.service:hover{transform:translateY(-8px)}.step:hover{transform:translateY(-7px)}.clarityItem:hover{transform:translateX(7px)}.faq details:hover{background:#fff}.motionTarget{opacity:0;transform:translateY(34px);transition:opacity .72s ease,transform .72s cubic-bezier(.2,.75,.25,1);transition-delay:var(--motion-delay,0ms)}.motionTarget.fromLeft{transform:translateX(-45px)}.motionTarget.fromRight{transform:translateX(45px)}.motionTarget.isVisible{opacity:1;transform:none}@keyframes planRise{from{opacity:0;transform:translateY(23px)}to{opacity:1;transform:none}}@keyframes cardEnter{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:none}}@keyframes orbDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(16px,-14px,0)}}@keyframes linePulse{0%,100%{opacity:.35}50%{opacity:1}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.motionTarget{opacity:1;transform:none}.scrollProgress{display:none}}
   </style>
 </head>
 <body>
+  <div class="scrollProgress" id="scrollProgress" aria-hidden="true"></div>
   <div class="demo">資訊部門展示　｜　<a href="外送加-官網改版展示.html">主官網</a>　｜　<a href="delivery-tools.html">工具廣告頁</a>　｜　<b>方案廣告頁</b>　｜　表單不會真的送出</div>
   <nav class="nav shell" aria-label="主要選單">
     <a class="brand" href="外送加-官網改版展示.html" aria-label="外送＋｜外送規劃的專家"><img class="brandLogo" src="https://helen12021202-afk.github.io/syntools/assets/syncompgo-logo.png" alt="外送＋｜外送規劃的專家" width="225" height="58"></a>
-    <div class="navLinks"><a href="外送加-官網改版展示.html">首頁</a><a href="delivery-tools.html">免費工具</a><a class="current" href="#services">服務方案</a><a href="#case">成功案例</a><a href="#faq">常見問題</a><a class="cta" href="#contact" onclick="trackEvent('cta_click',{location:'nav'})">取得完整報價</a></div>
+    <div class="navLinks"><a href="外送加-官網改版展示.html">首頁</a><a href="delivery-tools.html">免費工具</a><a class="current" href="#services">服務方案</a><a href="#pricing">報價方式</a><a href="#faq">常見問題</a><a class="cta" href="#contact" onclick="trackEvent('cta_click',{location:'nav'})">取得完整報價</a></div>
   </nav>
 
   <main>
@@ -70,29 +73,6 @@
 
     <section class="section" id="services">
       <div class="shell"><div class="sectionIntro"><small>你不用自己摸索</small><h2>外送上線需要處理的事，一次整合</h2><p>從申請文件到首筆訂單發生，每一階段都有主要負責人持續追蹤。</p></div><div class="serviceGrid"><article class="service"><span>📝</span><h3>帳號申請</h3><p>協助確認合約、菜單、證件與存摺等申請資料。</p></article><article class="service"><span>📸</span><h3>影像服務</h3><p>每組固定 6 張，可選重新拍攝或精修既有照片。</p></article><article class="service"><span>📋</span><h3>菜單建置</h3><p>整理品項、分類、價格與加購選項，方便顧客點餐。</p></article><article class="service"><span>📈</span><h3>後續營運</h3><p>依確認內容協助活動設定、頁面調整與營運建議。</p></article></div></div>
-    </section>
-
-    <section class="section caseSection" id="case">
-      <div class="shell">
-        <div class="sectionIntro"><small>匿名真實案例</small><h2>全新品牌，也能從零開始建立</h2><p>新帳號不只要完成申請，店名、定位、菜單與主打餐點也要一起規劃，顧客才看得懂、記得住。</p></div>
-        <div class="planCase">
-          <article class="planCaseCopy">
-            <div class="caseIdentity"><img src="https://helen12021202-afk.github.io/syntools/assets/syncompgo-logo.png" alt="" aria-hidden="true" width="148" height="38"><span>競合智數實際營運案例</span></div>
-            <span class="caseBadge">全新日式丼飯品牌</span>
-            <h3>從沒有店名、菜單與訂單開始</h3>
-            <p>團隊依產品特色建立品牌定位，聚焦鮭魚炊飯等主打品，再規劃菜單視覺與平台營運方向。</p>
-            <div class="caseActions"><span>✓ 從零建立品牌名稱與定位</span><span>✓ 讓主打餐點形成清楚記憶點</span><span>✓ 菜單、視覺與廣告方向一起規劃</span></div>
-            <a class="button" href="#contact" onclick="trackEvent('case_cta_click',{page:'plan',action:'quote'})">評估我的新品牌 →</a>
-          </article>
-          <div class="caseProof" aria-label="個案成果">
-            <small>該店個別期間成果</small>
-            <div class="caseMetric"><span>月營業額</span><strong>15～20 萬</strong></div>
-            <div class="caseMetric"><span>曾再次訂購</span><strong>900+ 人</strong></div>
-          </div>
-        </div>
-        <p class="caseDisclaimer">＊以上為特定店家於個別期間之成果，非所有店家皆能達到；實際結果受品類、商圈、售價、活動與營運條件影響。</p>
-        <!-- IT：正式上線前補入統計期間，並再次確認案例資料與使用授權。 -->
-      </div>
     </section>
 
     <section class="section" id="pricing">
@@ -126,7 +106,8 @@
     function trackEvent(name,data){window.dataLayer.push(Object.assign({event:name},data||{}));}
     function captureAttribution(){const params=new URLSearchParams(location.search);const map={utm_source:'utmSource',utm_medium:'utmMedium',utm_campaign:'utmCampaign',gclid:'gclid'};Object.keys(map).forEach(key=>{const field=document.getElementById(map[key]);if(field)field.value=params.get(key)||'';});}
     function submitDemo(event){event.preventDefault();trackEvent('demo_form_submit',{landing_page:'uber_eats_plan',advertised_starting_price:12000});document.getElementById('formMessage').textContent='✓ 展示送出成功；正式版串接後才會傳送資料。';}
-    captureAttribution();
+    function initMotion(){const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;const bar=document.getElementById('scrollProgress');const update=()=>{const total=document.documentElement.scrollHeight-innerHeight;if(bar)bar.style.transform='scaleX('+(total>0?Math.min(1,scrollY/total):0)+')';};update();addEventListener('scroll',update,{passive:true});const targets=Array.from(document.querySelectorAll('.sectionIntro,.service,.explainCopy,.clarityCard,.step,.faq details,.contactCopy,.form'));targets.forEach((item,index)=>{item.classList.add('motionTarget');item.style.setProperty('--motion-delay',(index%5)*65+'ms');});document.querySelectorAll('.explainCopy,.contactCopy').forEach(item=>item.classList.add('fromLeft'));document.querySelectorAll('.clarityCard,.form').forEach(item=>item.classList.add('fromRight'));if(reduce){targets.forEach(item=>item.classList.add('isVisible'));return;}const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('isVisible');observer.unobserve(entry.target);}}),{threshold:.12,rootMargin:'0px 0px -7%'});targets.forEach(item=>observer.observe(item));}
+    captureAttribution();initMotion();
   </script>
 </body>
 </html>

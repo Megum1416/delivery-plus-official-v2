@@ -45,13 +45,17 @@
     .hero:before{content:"";position:absolute;width:390px;height:390px;border:2px solid var(--gold);border-radius:50%;left:-205px;top:105px}.heroCopy{position:relative}.toolScene{margin-top:31px;display:flex;align-items:center;gap:19px;position:relative}.toolScene:after{content:"";position:absolute;width:110px;height:44px;border-top:2px dashed var(--coral);border-right:2px dashed var(--coral);border-radius:0 28px 0 0;left:128px;top:30px}.toolScene figure{width:122px;height:122px;margin:0;border-radius:50%;overflow:hidden;border:6px solid #fff;box-shadow:8px 9px 0 var(--gold);flex:none}.toolScene img{width:100%;height:100%;object-fit:cover;display:block}.toolScene p{max-width:220px!important;margin:0!important;color:#52615d!important;font-size:11px!important;font-weight:750}.toolScene p b{display:block;color:var(--green);font-size:14px;margin-bottom:4px}.calcCard{position:relative}.calcCard:after{content:"";position:absolute;width:78px;height:78px;border:1px solid var(--gold);border-radius:50%;right:-32px;top:-32px;z-index:-1}.sectionIntro h2:after{content:"";display:block;width:86px;height:12px;border-top:2px solid var(--coral);border-right:2px solid var(--coral);border-radius:0 14px 0 0;margin:23px auto 0}.photoCredit{display:block;margin-top:8px;font-size:9px;color:#718f84}.photoCredit a{color:#b7ccc5;text-decoration:underline;text-underline-offset:3px}
     @media(max-width:900px){.toolScene{justify-content:center}.heroCopy .toolScene p{text-align:left!important}}
     @media(max-width:620px){.toolScene{justify-content:flex-start}.toolScene figure{width:104px;height:104px}.toolScene:after{width:80px;left:106px}.sectionIntro h2:after{margin-left:0}.calcCard:after{display:none}}
+    html{scroll-padding-top:88px}body{overflow-x:hidden}.scrollProgress{position:fixed;left:0;top:0;width:100%;height:4px;background:var(--coral);transform:scaleX(0);transform-origin:left;z-index:100}.nav{position:sticky;top:0;z-index:60;background:#fffffff2;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px)}.brand{flex-shrink:0}.brandLogo{display:block;width:220px;height:auto}.heroCopy>*{animation:toolRise .7s both}.heroCopy>*:nth-child(2){animation-delay:.08s}.heroCopy>*:nth-child(3){animation-delay:.16s}.heroCopy>*:nth-child(4){animation-delay:.24s}.heroCopy>*:nth-child(5){animation-delay:.32s}.toolScene figure{animation:toolFloat 4.8s ease-in-out infinite}.toolScene:after{animation:lineBlink 2.2s ease-in-out infinite}.calcCard{animation:calcEnter .85s .18s both}.calcCard:before{content:"";position:absolute;inset:-1px;border-top:4px solid var(--green);pointer-events:none}.metric strong,.resultStatus strong{transition:transform .25s,color .25s}.metric:hover strong{display:inline-block;transform:translateY(-3px)}.auditItem label,.step{transition:transform .28s ease,border-color .28s ease,background .28s ease}.auditItem label:hover{transform:translateY(-3px)}.step:hover{transform:translateY(-7px)}.ring{animation:ringBreath 3.6s ease-in-out infinite}.motionTarget{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1);transition-delay:var(--motion-delay,0ms)}.motionTarget.fromLeft{transform:translateX(-45px)}.motionTarget.fromRight{transform:translateX(45px)}.motionTarget.isVisible{opacity:1;transform:none}@keyframes toolRise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}@keyframes calcEnter{from{opacity:0;transform:translateX(45px)}to{opacity:1;transform:none}}@keyframes toolFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(2deg)}}@keyframes lineBlink{0%,100%{opacity:.35}50%{opacity:1}}@keyframes ringBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+    @media(max-width:620px){.brandLogo{width:158px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.motionTarget{opacity:1;transform:none}.scrollProgress{display:none}}
   </style>
 </head>
 <body>
+  <div class="scrollProgress" id="scrollProgress" aria-hidden="true"></div>
   <div class="demo">資訊部門展示　｜　<a href="外送加-官網改版展示.html">主官網</a>　｜　<b>工具廣告頁</b>　｜　<a href="uber-eats-plan.html">方案廣告頁</a>　｜　表單不會真的送出</div>
   <nav class="nav shell" aria-label="主要選單">
-    <a class="brand" href="外送加-官網改版展示.html"><b>外送<span>＋</span></b><small>競合智數</small></a>
-    <div class="navLinks"><a href="外送加-官網改版展示.html">首頁</a><a class="current" href="#margin">免費工具</a><a href="uber-eats-plan.html">服務方案</a><a href="#case">成果案例</a><a href="外送加-官網改版展示.html#process">合作流程</a><a class="cta" href="#contact" onclick="trackEvent('cta_click',{location:'nav'})">免費請專人評估</a></div>
+    <a class="brand" href="外送加-官網改版展示.html" aria-label="外送＋｜外送規劃的專家"><img class="brandLogo" src="https://helen12021202-afk.github.io/syntools/assets/syncompgo-logo.png" alt="外送＋｜外送規劃的專家" width="220" height="56"></a>
+    <div class="navLinks"><a href="外送加-官網改版展示.html">首頁</a><a class="current" href="#margin">免費工具</a><a href="uber-eats-plan.html">服務方案</a><a href="#audit">頁面健檢</a><a href="外送加-官網改版展示.html#process">合作流程</a><a class="cta" href="#contact" onclick="trackEvent('cta_click',{location:'nav'})">免費請專人評估</a></div>
   </nav>
 
   <main>
@@ -110,27 +114,6 @@
       </div>
     </section>
 
-    <section class="section caseSection" id="case">
-      <div class="shell">
-        <div class="sectionIntro"><small>匿名真實案例</small><h2>頁面問題找對，改善才有方向</h2><p>不是只把照片換漂亮，而是先看顧客能不能快速理解主打餐點，再決定菜單與廣告怎麼調整。</p></div>
-        <div class="toolCase">
-          <article class="toolCaseCopy">
-            <span class="caseBadge">中式料理／火鍋店</span>
-            <h3>原本排序靠後，主打餐點也說不清楚</h3>
-            <p>團隊先找出頁面最主要的理解障礙，再把資源集中在能影響顧客選擇的地方。</p>
-            <div class="caseChanges"><span>✓ 聚焦最有辨識度的主打品</span><span>✓ 重新整理頁面溝通順序</span><span>✓ 依店家狀況調整廣告配置</span></div>
-            <a class="button" href="#audit" onclick="trackEvent('case_cta_click',{page:'tools',action:'audit'})">先替自己的頁面健檢 →</a>
-          </article>
-          <div class="caseNumbers" aria-label="個案成果">
-            <div class="caseNumber"><span>淡季月營業額</span><strong>15～20 萬</strong><small>該店個別期間成果</small></div>
-            <div class="caseNumber"><span>曾再次訂購</span><strong>900+ 人</strong><small>平台案例資料顯示</small></div>
-          </div>
-        </div>
-        <p class="caseDisclaimer">＊以上為特定店家於個別期間之成果，非所有店家皆能達到；實際結果受品類、商圈、售價、活動與營運條件影響。</p>
-        <!-- IT：正式上線前補入統計期間，並再次確認案例資料與使用授權。 -->
-      </div>
-    </section>
-
     <section class="section steps">
       <div class="shell"><div class="sectionIntro"><small>算完之後</small><h2>結果不是答案，而是下一步</h2></div><div class="stepGrid"><article class="step"><span>01</span><h3>先看出缺口</h3><p>確認是成本、照片、菜單或活動條件影響目前表現。</p></article><article class="step"><span>02</span><h3>取得專人建議</h3><p>把工具結果帶進表單，讓顧問先了解店家目前狀況。</p></article><article class="step"><span>03</span><h3>需要再合作</h3><p>專人提供服務內容及完整含稅報價，確認清楚後再決定。</p></article></div></div>
     </section>
@@ -160,7 +143,8 @@
     function calculateAudit(){const items=Array.from(document.querySelectorAll('.auditItem input'));const checked=items.filter(item=>item.checked);const missing=items.filter(item=>!item.checked);const score=Math.round(checked.length/items.length*100);const tips=missing.slice(0,3).map(item=>item.dataset.tip);auditSummary='頁面健康分數 '+score+' 分；'+(tips.length?'優先改善：'+tips.join('、'):'八項基礎皆已完成');document.getElementById('auditScore').textContent=score;document.getElementById('ring').style.setProperty('--score',score+'%');document.getElementById('auditTitle').textContent=score>=75?'頁面基礎健康，可繼續測試':score>=50?'有基礎，但還有明顯缺口':'建議先做完整頁面健檢';document.getElementById('auditText').textContent=score>=75?'維持每週檢查，繼續測試主打品與活動效果。':'先完成下方優先項目，再擴大活動或廣告。';document.getElementById('priorities').innerHTML=tips.length?tips.map(tip=>'<li>→ '+tip+'</li>').join(''):'<li>✓ 下一步可測試不同主打品與活動組合。</li>';document.getElementById('message').value='我完成了外送頁面健檢：'+auditSummary+'。想請專人協助評估。';trackEvent('page_audit_complete',{score:score});}
     function captureAttribution(){const params=new URLSearchParams(location.search);const map={utm_source:'utmSource',utm_medium:'utmMedium',utm_campaign:'utmCampaign',gclid:'gclid'};Object.keys(map).forEach(key=>{const field=document.getElementById(map[key]);if(field)field.value=params.get(key)||'';});}
     function submitDemo(event){event.preventDefault();trackEvent('demo_form_submit',{landing_page:'delivery_tools'});document.getElementById('formMessage').textContent='✓ 展示送出成功；正式版串接後才會傳送資料。';}
-    captureAttribution();calculateMargin();
+    function initMotion(){const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;const bar=document.getElementById('scrollProgress');const update=()=>{const total=document.documentElement.scrollHeight-innerHeight;if(bar)bar.style.transform='scaleX('+(total>0?Math.min(1,scrollY/total):0)+')';};update();addEventListener('scroll',update,{passive:true});const targets=Array.from(document.querySelectorAll('.sectionIntro,.auditCard,.auditResult,.step,.contactCopy,.form'));targets.forEach((item,index)=>{item.classList.add('motionTarget');item.style.setProperty('--motion-delay',(index%4)*70+'ms');});document.querySelectorAll('.contactCopy').forEach(item=>item.classList.add('fromLeft'));document.querySelectorAll('.form,.auditResult').forEach(item=>item.classList.add('fromRight'));if(reduce){targets.forEach(item=>item.classList.add('isVisible'));return;}const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('isVisible');observer.unobserve(entry.target);}}),{threshold:.12,rootMargin:'0px 0px -7%'});targets.forEach(item=>observer.observe(item));}
+    captureAttribution();calculateMargin();initMotion();
   </script>
 </body>
 </html>
