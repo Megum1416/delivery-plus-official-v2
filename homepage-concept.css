@@ -87,11 +87,11 @@ button,input,select,textarea{font:inherit}
 .audienceItem:hover .audienceLink b,.audienceItem:focus-visible .audienceLink b{transform:translateX(7px)}
 .journey{background:var(--deep);color:#fff}
 .flipGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.flipCard{position:relative;min-height:430px;perspective:1200px}
+.flipCard{position:relative;min-height:430px;-webkit-perspective:1200px;perspective:1200px}
 .flipSurface{position:absolute;inset:0;width:100%;height:100%;color:inherit;text-align:left;cursor:default}
-.flipInner{position:absolute;inset:0;transition:transform .65s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
-.flipFront,.flipBack{position:absolute;inset:0;overflow:hidden;border-radius:6px;backface-visibility:hidden}
-.flipFront{background:#274d44}
+.flipInner{position:absolute;inset:0;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;transition:-webkit-transform .65s cubic-bezier(.2,.7,.2,1);transition:transform .65s cubic-bezier(.2,.7,.2,1);transition:transform .65s cubic-bezier(.2,.7,.2,1),-webkit-transform .65s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.flipFront,.flipBack{position:absolute;inset:0;overflow:hidden;border-radius:6px;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform-style:preserve-3d}
+.flipFront{background:#274d44;-webkit-transform:rotateY(0deg) translateZ(1px);transform:rotateY(0deg) translateZ(1px)}
 .flipFront:before{content:"";position:absolute;width:230px;height:230px;right:-100px;top:-85px;border:45px solid rgba(255,255,255,.1);border-radius:50%}
 .flipOne{background:#315c52}.flipTwo{background:#c86055}.flipThree{background:#866d3d}.flipFour{background:#49665c}
 .flipNumber{position:absolute;left:28px;top:28px;z-index:3;display:grid!important;place-items:center;width:68px;height:68px;border-radius:50%;background:#fff;color:var(--deep)!important;font-size:27px!important;font-weight:950!important;line-height:1!important;letter-spacing:-.03em!important;box-shadow:0 12px 30px rgba(10,39,32,.2)}
@@ -99,7 +99,7 @@ button,input,select,textarea{font:inherit}
 .flipFrontCopy:after{content:"＋";display:none;place-items:center;width:42px;height:42px;margin-top:20px;border:1px solid rgba(255,255,255,.55);border-radius:50%;color:#fff;font-size:24px}
 .flipFront span{color:#ffd08a;font-size:16px;font-weight:950;letter-spacing:.15em}
 .flipFront h3{margin:7px 0 0;font-size:30px;line-height:1.18}
-.flipBack{display:grid;grid-template-rows:44% 1fr;padding:0;background:var(--coral);transform:rotateY(180deg)}
+.flipBack{display:grid;grid-template-rows:44% 1fr;padding:0;background:var(--coral);-webkit-transform:rotateY(180deg) translateZ(1px);transform:rotateY(180deg) translateZ(1px)}
 .flipVisual{position:relative;display:block;overflow:hidden;background:#dfe8e4}
 .flipVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,59,50,.08),rgba(238,112,99,.24));mix-blend-mode:multiply}
 .flipVisual img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -108,8 +108,8 @@ button,input,select,textarea{font:inherit}
 .flipBackCopy>span{font-size:16px;font-weight:950;letter-spacing:.15em}
 .flipBack h3{margin:12px 0;font-size:32px;line-height:1.15}
 .flipBack p{margin:0;font-size:17px;line-height:1.7}
-.flipCard.isFlipped .flipInner{transform:rotateY(180deg)}
-@media(hover:hover) and (pointer:fine){.flipCard:hover .flipInner,.flipCard:focus-visible .flipInner{transform:rotateY(180deg)}}
+.flipCard.isFlipped .flipInner{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
+@media(hover:hover) and (pointer:fine){.flipCard:hover .flipInner,.flipCard:focus-visible .flipInner{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}}
 .journeyAction{display:flex;justify-content:space-between;align-items:center;gap:28px;margin-top:42px;padding-top:32px;border-top:1px solid rgba(255,255,255,.2)}
 .journeyAction p{margin:0;color:#e2eee9;font-size:20px;font-weight:800}
 .cases{background:var(--cream)}
