@@ -1,0 +1,25 @@
+name: 建立正式上線包（不會發布網站）
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取得網站檔案
+        uses: actions/checkout@v6
+      - name: 檢查網站內容
+        run: node validate-site.mjs
+      - name: 建立正式上線檔案
+        run: node scripts/build-production-package.mjs
+      - name: 提供 RD 下載
+        uses: actions/upload-artifact@v4
+        with:
+          name: delivery-plus-production-${{ github.sha }}
+          path: .production-site
+          if-no-files-found: error
+          retention-days: 30

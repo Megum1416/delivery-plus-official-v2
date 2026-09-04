@@ -96,6 +96,20 @@ const previewBuilder = fs.readFileSync('scripts/build-pages-preview.mjs', 'utf8'
 if (!previewBuilder.includes('"privacy.html"')) problems.push('preview builder: privacy.html is not published');
 if (previewBuilder.includes('"knowledge.html"')) problems.push('preview builder: old knowledge.html is still published');
 
+const productionBuilder = fs.readFileSync('scripts/build-production-package.mjs', 'utf8');
+for (const route of ['/', '/uber-eats-plan', '/results', '/knowledge', '/delivery-tools', '/privacy']) {
+  if (!productionBuilder.includes(`route: "${route}"`)) problems.push(`production builder: missing ${route}`);
+}
+
+const productionWorkflow = fs.readFileSync('.github/workflows/production-package.yml', 'utf8');
+if (!productionWorkflow.includes('actions/upload-artifact@v4')) problems.push('production workflow: download artifact is missing');
+if (productionWorkflow.includes('actions/deploy-pages')) problems.push('production workflow: must not publish GitHub Pages');
+
+const readme = fs.readFileSync('README.md', 'utf8');
+for (const requiredText of ['建立正式上線包（不會發布網站）', '不要把整個 repo 直接上傳', '其餘 90 題仍需內容負責人逐題確認']) {
+  if (!readme.includes(requiredText)) problems.push(`README.md: missing ${requiredText}`);
+}
+
 const homepage = fs.readFileSync('首頁新版提案.html', 'utf8');
 for (const alias of ['外送加', '外送+', '外送 Plus', '競合智數', 'syncompgo.com']) {
   if (!homepage.includes(alias)) problems.push(`首頁新版提案.html: missing brand alias ${alias}`);

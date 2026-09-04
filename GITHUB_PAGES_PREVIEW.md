@@ -28,6 +28,8 @@
 
 RD 應直接使用 repo 原始檔，不要使用 Actions 產生的 `.pages-preview` 暫存內容。正式網站不會包含預覽用的 `noindex`。
 
+建議由 GitHub Actions 手動執行「建立正式上線包（不會發布網站）」，下載產生的 `delivery-plus-production-...`。這份下載檔與主管預覽分開，不會出現在 GitHub Pages 網站上；完整操作請先看 [README.md](README.md)。
+
 正式網址對應如下：
 
 - 首頁：`https://syncompgo.com/`
