@@ -7,6 +7,7 @@
 - 預覽檔的每個 HTML 都會自動加入 `noindex, nofollow`，不會污染正式原始檔。
 - 預覽檔會將分享圖片網址改為 GitHub Pages 內的同一份素材，讓主管分享預覽時也能讀到圖片。
 - GitHub Pages 網址仍屬公開網址，知道連結的人都能開啟；禁止搜尋不等於密碼保護。
+- Google Tag Manager 只會在正式網域 `syncompgo.com` 或 `www.syncompgo.com` 載入；GitHub Pages 預覽不會送出正式追蹤或 Google Ads 轉換。
 
 ## 預覽首頁
 

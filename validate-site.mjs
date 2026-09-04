@@ -3,6 +3,13 @@ import path from 'node:path';
 
 const files = fs.readdirSync('.').filter((file) => file.endsWith('.html'));
 const problems = [];
+const trackedPages = [
+  '首頁新版提案.html',
+  '服務方案新版提案.html',
+  '實際案例新版提案.html',
+  '常見QA新版提案.html',
+  '外送經營健檢新版提案.html',
+];
 
 for (const file of files) {
   const source = fs.readFileSync(file, 'utf8');
@@ -23,6 +30,24 @@ for (const file of files) {
       problems.push(`${file}: invalid JSON-LD (${error.message})`);
     }
   }
+}
+
+for (const file of trackedPages) {
+  const source = fs.readFileSync(file, 'utf8');
+  const loaderCount = (source.match(/src=["']gtm-loader\.js\?v=1["']/g) || []).length;
+  if (loaderCount !== 1) problems.push(`${file}: GTM loader=${loaderCount}`);
+}
+
+const gtmLoader = fs.readFileSync('gtm-loader.js', 'utf8');
+for (const requiredValue of ['GTM-58ZQ5ZBG', 'syncompgo.com', 'www.syncompgo.com']) {
+  if (!gtmLoader.includes(requiredValue)) problems.push(`gtm-loader.js: missing ${requiredValue}`);
+}
+
+const siteEvents = fs.readFileSync('site-events.js', 'utf8');
+const responseOkIndex = siteEvents.indexOf('if (!result?.ok)');
+const successEventIndex = siteEvents.indexOf('track("lead_form_submit_success"');
+if (responseOkIndex < 0 || successEventIndex < responseOkIndex) {
+  problems.push('site-events.js: success event is not guarded by a successful receiver response');
 }
 
 const knowledge = fs.readFileSync('knowledge.html', 'utf8');
