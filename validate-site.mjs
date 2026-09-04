@@ -10,6 +10,20 @@ const trackedPages = [
   '常見QA新版提案.html',
   '外送經營健檢新版提案.html',
 ];
+const schemaExpectations = new Map([
+  ['首頁新版提案.html', ['WebSite', 'Organization']],
+  ['服務方案新版提案.html', ['Service', 'WebPage']],
+  ['實際案例新版提案.html', ['Article', 'WebPage']],
+  ['常見QA新版提案.html', ['FAQPage']],
+  ['外送經營健檢新版提案.html', ['WebApplication', 'WebPage']],
+]);
+const searchSignalExpectations = new Map([
+  ['首頁新版提案.html', ['外送申請', '菜單建置', '營運協助']],
+  ['服務方案新版提案.html', ['外送服務方案', '帳號申請']],
+  ['實際案例新版提案.html', ['實際案例', '不二心']],
+  ['常見QA新版提案.html', ['外送平台常見問題', '抽成']],
+  ['外送經營健檢新版提案.html', ['外送經營健檢', '毛利試算']],
+]);
 
 for (const file of files) {
   const source = fs.readFileSync(file, 'utf8');
@@ -36,6 +50,36 @@ for (const file of trackedPages) {
   const source = fs.readFileSync(file, 'utf8');
   const loaderCount = (source.match(/src=["']gtm-loader\.js\?v=1["']/g) || []).length;
   if (loaderCount !== 1) problems.push(`${file}: GTM loader=${loaderCount}`);
+
+  for (const schemaType of schemaExpectations.get(file) || []) {
+    if (!source.includes(`"@type": "${schemaType}"`)) {
+      problems.push(`${file}: missing schema ${schemaType}`);
+    }
+  }
+
+  for (const signal of searchSignalExpectations.get(file) || []) {
+    if (!source.includes(signal)) problems.push(`${file}: missing search signal ${signal}`);
+  }
+
+  for (const targetPage of trackedPages) {
+    if (targetPage === file) continue;
+    if (!source.includes(`href="${targetPage}"`)) {
+      problems.push(`${file}: missing internal link to ${targetPage}`);
+    }
+  }
+}
+
+const homepage = fs.readFileSync('首頁新版提案.html', 'utf8');
+for (const alias of ['外送加', '外送+', '外送 Plus', '競合智數', 'syncompgo.com']) {
+  if (!homepage.includes(alias)) problems.push(`首頁新版提案.html: missing brand alias ${alias}`);
+}
+
+const faqSource = fs.readFileSync('常見QA新版提案.html', 'utf8');
+const faqSchema = [...faqSource.matchAll(/<script type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/g)]
+  .map((match) => JSON.parse(match[1]))
+  .find((value) => value['@type'] === 'FAQPage');
+if (!faqSchema || faqSchema.mainEntity?.length !== 10) {
+  problems.push(`常見QA新版提案.html: FAQ schema questions=${faqSchema?.mainEntity?.length ?? 0}`);
 }
 
 const gtmLoader = fs.readFileSync('gtm-loader.js', 'utf8');
@@ -63,6 +107,7 @@ console.log(`Knowledge questions: ${questionCount}`);
 console.log(`Knowledge categories: ${categoryCount}`);
 console.log(`Core FAQs: ${coreFaqCount}`);
 console.log(`Old free-tool label: ${oldLabelCount}`);
+console.log(`Tracked SEO pages: ${trackedPages.length}`);
 console.log(`Broken: ${problems.length ? `\n${problems.join('\n')}` : 'none'}`);
 
 if (questionCount !== 100 || categoryCount !== 7 || coreFaqCount !== 10 || oldLabelCount !== 0 || problems.length) {
