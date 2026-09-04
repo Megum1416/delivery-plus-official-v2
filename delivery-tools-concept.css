@@ -1,0 +1,151 @@
+.toolsPage .navLinks .current { color: var(--green); }
+.toolsPage .navLinks .current::after { right: 0 !important; }
+
+.toolsHero { position: relative; overflow: hidden; background: var(--cream); }
+.toolsHero::before { content: ""; position: absolute; right: -130px; top: 70px; width: 540px; height: 540px; border: 2px solid var(--gold); border-radius: 50%; opacity: .72; pointer-events: none; }
+.toolsHero::after { content: ""; position: absolute; right: 130px; top: 225px; width: 265px; height: 265px; border: 58px solid rgba(23, 107, 92, .09); border-radius: 50%; pointer-events: none; }
+.toolsHeroGrid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.12fr .88fr; gap: 78px; align-items: center; min-height: 650px; padding: 90px 0; }
+.toolsHero .heroCopy { max-width: none; }
+.toolsHero .heroCopy h1 { margin: 22px 0; font-size: clamp(48px, 4vw, 60px); line-height: 1.1; letter-spacing: -.06em; }
+.toolsHero .heroCopy h1 span { display: block; white-space: nowrap; }
+.toolsHero .heroCopy p { max-width: 620px; color: var(--muted); font-size: 20px; line-height: 1.75; }
+.toolsHero .heroCopy .heroLead span { display: block; }
+.toolsHero .heroCopy .heroLead span + span { margin-top: 3px; }
+.toolsTrust { display: flex; flex-wrap: wrap; gap: 0; margin-top: 30px; }
+.toolsTrust span { padding-right: 18px; color: var(--green); font-size: 13px; font-weight: 900; }
+.toolsTrust span + span { padding-left: 18px; border-left: 1px solid var(--line); }
+.toolsHeroGuide { position: relative; display: grid; gap: 34px; padding: 42px; background: var(--deep); color: #fff; box-shadow: 18px 20px 0 var(--coral); animation: toolsGuideFloat 6s ease-in-out 1s infinite; }
+.toolsHeroGuide::before { content: ""; position: absolute; right: -22px; top: -24px; width: 92px; height: 92px; border: 2px solid var(--gold); border-right-color: transparent; border-radius: 50%; animation: toolsGuideOrbit 12s linear infinite; }
+.guideScore { display: flex; align-items: baseline; gap: 12px; padding-bottom: 27px; border-bottom: 1px solid rgba(255, 255, 255, .18); animation: heroRise .75s .18s both; }
+.guideScore strong { color: var(--gold); font-size: 56px; line-height: .9; letter-spacing: -.06em; white-space: nowrap; }
+.guideScore span { color: rgba(255, 255, 255, .76); font-size: 18px; font-weight: 850; }
+.guideCopy { animation: heroRise .75s .3s both; }
+.guideCopy > span { color: var(--coral); font-size: 13px; font-weight: 950; letter-spacing: .12em; }
+.guideCopy h2 { margin: 9px 0 23px; font-size: 30px; line-height: 1.28; letter-spacing: -.035em; }
+.guideCopy ul { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.guideCopy li { padding: 12px 0; border-top: 1px solid rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .82); font-size: 16px; font-weight: 750; }
+.guideCopy li::before { content: "✓"; margin-right: 10px; color: var(--gold); font-weight: 950; }
+
+.toolsMarquee { --marquee-duration: 30s; position: relative; border-top: 1px solid rgba(255, 255, 255, .2); border-bottom: 1px solid rgba(255, 255, 255, .2); }
+.toolsMarquee .marqueeTrack { width: max-content; will-change: transform; animation-name: toolsMarqueeMove; }
+.toolsMarquee .marqueeSet { width: max(100vw, 980px); min-width: max(100vw, 980px); }
+@keyframes toolsMarqueeMove { to { transform: translateX(-50%); } }
+
+.marginCard { position: relative; padding: 38px; background: #fff; border-top: 6px solid var(--green); box-shadow: 20px 22px 0 var(--coral); }
+.marginCard::before { content: ""; position: absolute; right: -34px; top: -36px; z-index: -1; width: 115px; height: 115px; border: 2px solid var(--gold); border-radius: 50%; }
+.toolHeading > span { color: var(--coral); font-size: 12px; font-weight: 950; letter-spacing: .12em; }
+.toolHeading h2 { margin: 7px 0 4px; font-size: 30px; line-height: 1.25; }
+.toolHeading p { margin: 0 0 25px; color: var(--muted); font-size: 15px; }
+.toolInputGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.toolField { display: grid; gap: 7px; }
+.toolField > span { color: var(--ink); font-size: 17px; font-weight: 900; }
+.toolField input { width: 100%; min-width: 0; padding: 16px 17px; border: 1px solid var(--line); background: #fff; color: var(--ink); font: inherit; font-size: 18px; }
+.toolField input:focus { outline: 3px solid rgba(216, 162, 42, .22); border-color: var(--gold); }
+.toolFieldFull { grid-column: 1 / -1; }
+.marginMetrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+.marginMetrics article { padding: 16px 14px; background: #f1f2ed; border-top: 3px solid var(--gold); }
+.marginMetrics span { display: block; min-height: 42px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.marginMetrics strong { display: block; margin-top: 4px; color: var(--green); font-size: 23px; line-height: 1.2; }
+.marginMetrics .primaryMetric { background: var(--deep); border-color: var(--coral); }
+.marginMetrics .primaryMetric span { color: rgba(255, 255, 255, .68); }
+.marginMetrics .primaryMetric strong { color: #fff; }
+.marginStatus { display: grid; grid-template-columns: 180px 1fr; gap: 20px; align-items: center; margin-top: 10px; padding: 17px; background: var(--green); color: #fff; }
+.marginStatus span { display: block; color: rgba(255, 255, 255, .7); font-size: 12px; }
+.marginStatus strong { display: block; font-size: 28px; line-height: 1.1; }
+.marginStatus p { margin: 0; color: #fff; font-size: 14px; line-height: 1.55; }
+.toolCta { width: 100%; margin-top: 14px; background: var(--coral); }
+.toolDisclaimer { margin: 12px 0 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+
+.auditSection { background: #fff; }
+.auditHeading { display: block; margin-bottom: 45px; }
+.auditHeading .sectionHead { margin-bottom: 0; }
+.auditHeading .sectionHead h2 { max-width: none; font-size: clamp(46px, 4.8vw, 68px); white-space: nowrap; }
+.auditHeading > p { max-width: 650px; margin: 22px 0 0; color: var(--muted); font-size: 17px; line-height: 1.7; }
+.auditLayout { display: grid; grid-template-columns: 1.08fr .92fr; gap: 0; align-items: stretch; }
+.auditChecklist { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: min-content; align-content: center; gap: 14px; padding: 34px; background: var(--cream); border-top: 5px solid var(--gold); }
+.auditItem { position: relative; cursor: pointer; }
+.auditItem input { position: absolute; opacity: 0; pointer-events: none; }
+.auditItem span { display: flex; gap: 12px; align-items: center; min-height: 74px; padding: 15px; background: #fff; border: 1px solid var(--line); color: var(--ink); font-size: 15px; font-weight: 800; line-height: 1.5; transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+.auditItem:hover span { transform: translateY(-3px); border-color: var(--gold); }
+.auditItem span::before { content: "○"; flex: none; color: var(--muted); font-size: 20px; }
+.auditItem input:focus-visible + span { outline: 3px solid rgba(216, 162, 42, .28); }
+.auditItem input:checked + span { border-color: var(--green); background: #edf3ee; color: var(--green); }
+.auditItem input:checked + span::before { content: "✓"; font-weight: 950; }
+.auditResult { display: flex; flex-direction: column; justify-content: center; padding: 45px; background: var(--deep); color: #fff; }
+.scoreRing { display: grid; place-items: center; width: 160px; height: 160px; margin-bottom: 30px; border-radius: 50%; background: conic-gradient(var(--gold) var(--score, 0%), rgba(255, 255, 255, .12) 0); transition: background .35s ease; }
+.scoreRing.isUpdating { animation: scoreRingPop .42s cubic-bezier(.2, .8, .2, 1); }
+.scoreRing > div { display: flex; align-items: baseline; justify-content: center; width: 126px; height: 126px; padding-top: 32px; border-radius: 50%; background: var(--deep); }
+.scoreRing strong { font-size: 48px; line-height: 1; }
+.scoreRing span { margin-left: 4px; color: rgba(255, 255, 255, .65); font-size: 14px; }
+.auditLabel { color: var(--gold); font-size: 12px; font-weight: 950; letter-spacing: .12em; }
+.auditResult h3 { margin: 8px 0; font-size: 30px; line-height: 1.3; }
+.auditResult > p { margin: 0; color: rgba(255, 255, 255, .7); font-size: 15px; line-height: 1.7; }
+.priorityList { display: grid; gap: 0; margin: 24px 0 0; padding: 0; list-style: none; }
+.priorityList li { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .16); color: rgba(255, 255, 255, .88); font-size: 16px; line-height: 1.6; }
+.resultCta { width: 100%; margin-top: 18px; background: var(--gold); color: var(--deep); }
+.resultCta:disabled { cursor: not-allowed; opacity: .42; }
+
+.marginSection { background: var(--cream); }
+.marginSectionGrid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 85px; align-items: start; }
+.marginIntro { position: sticky; top: 125px; margin-bottom: 0; }
+.marginIntro h2 span { display: block; white-space: nowrap; }
+.marginIntro p { margin-top: 24px; line-height: 1.7; }
+.marginIntro p span { display: block; }
+
+.nextStepSection { background: var(--cream); }
+.nextStepLayout { display: grid; grid-template-columns: .82fr 1.18fr; gap: 90px; align-items: start; }
+.nextStepLayout .sectionHead { position: sticky; top: 125px; }
+.nextStepLayout h2 span { display: block; white-space: nowrap; }
+.nextStepList { border-top: 1px solid var(--line); }
+.nextStepList article { display: grid; grid-template-columns: 58px 1fr; gap: 22px; align-items: start; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.nextStepList article > span { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: #fff; font-size: 18px; font-weight: 950; letter-spacing: .03em; box-shadow: 5px 5px 0 var(--gold); transition: transform .28s ease, box-shadow .28s ease; }
+.nextStepList article:hover > span { transform: translateY(-4px) rotate(-3deg); box-shadow: 7px 8px 0 var(--gold); }
+.nextStepList h3 { margin: 0 0 7px; font-size: 23px; }
+.nextStepList p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+
+@keyframes toolsGuideFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes toolsGuideOrbit { to { transform: rotate(360deg); } }
+@keyframes scoreRingPop { 0% { transform: scale(.96); } 65% { transform: scale(1.035); } 100% { transform: scale(1); } }
+
+@media (max-width: 1080px) {
+  .toolsHeroGrid { grid-template-columns: 1fr; gap: 52px; min-height: 0; }
+  .toolsHero .heroCopy { max-width: 800px; }
+  .toolsHeroGuide { width: min(680px, calc(100% - 20px)); }
+  .marginCard { width: min(760px, calc(100% - 24px)); margin: auto; }
+  .marginSectionGrid { grid-template-columns: 1fr; gap: 45px; }
+  .marginIntro { position: static; }
+  .nextStepLayout { grid-template-columns: 1fr; gap: 45px; }
+  .nextStepLayout .sectionHead { position: static; }
+}
+
+@media (max-width: 760px) {
+  .toolsHeroGrid { min-height: auto; padding: 64px 0 76px; }
+  .toolsHero::before { right: -185px; top: 85px; width: 360px; height: 360px; }
+  .toolsHero::after { display: none; }
+  .toolsHeroGuide { width: 100%; gap: 25px; padding: 30px 24px; box-shadow: 10px 12px 0 var(--coral); }
+  .toolsHeroGuide::before { right: -8px; top: -15px; width: 68px; height: 68px; }
+  .guideScore strong { font-size: 48px; }
+  .guideCopy h2 { font-size: 27px; }
+  .toolsHero .heroCopy h1 { font-size: 38px; }
+  .toolsHero .heroCopy h1 span { white-space: normal; }
+  .toolsHero .heroCopy p { font-size: 18px; }
+  .toolsTrust { display: grid; gap: 8px; }
+  .toolsTrust span, .toolsTrust span + span { padding: 0; border: 0; }
+  .marginCard { width: 100%; padding: 25px 20px; box-shadow: 10px 12px 0 var(--coral); }
+  .marginCard::before { display: none; }
+  .toolHeading h2 { font-size: 27px; }
+  .toolInputGrid, .marginMetrics { grid-template-columns: 1fr; }
+  .toolFieldFull { grid-column: auto; }
+  .marginMetrics span { min-height: 0; }
+  .marginStatus { grid-template-columns: 1fr; gap: 9px; }
+  .auditHeading .sectionHead h2 { font-size: 42px; white-space: normal; }
+  .auditLayout { grid-template-columns: 1fr; }
+  .auditChecklist { grid-template-columns: 1fr; padding: 22px 18px; }
+  .auditResult { padding: 32px 22px; }
+  .scoreRing { margin: 0 auto 26px; }
+  .auditResult h3 { font-size: 27px; }
+  .marginIntro h2 span { white-space: normal; }
+  .nextStepLayout h2 span { white-space: normal; }
+  .nextStepList article { grid-template-columns: 54px 1fr; gap: 14px; }
+  .nextStepList article > span { width: 44px; height: 44px; font-size: 17px; box-shadow: 4px 4px 0 var(--gold); }
+}

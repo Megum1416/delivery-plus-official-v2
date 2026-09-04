@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="輸入店家的售價、成本與活動條件，估算單筆外送毛利，並檢查外送頁面的基礎完成度。">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#17332d">
+  <title>外送經營健檢新版提案｜外送＋</title>
+  <link rel="icon" href="assets/syncompgo-logo.png">
+  <link rel="stylesheet" href="homepage-concept.css?v=16">
+  <link rel="stylesheet" href="delivery-tools-concept.css?v=8">
+</head>
+<body class="toolsPage" data-page="health_check">
+  <div class="scrollProgress" id="scrollProgress" aria-hidden="true"></div>
+  <header class="siteHeader">
+    <nav class="shell nav" aria-label="主要導覽">
+      <a class="brand" href="首頁新版提案.html" aria-label="外送＋首頁"><img src="assets/syncompgo-logo.png" alt="外送＋｜外送規劃的專家" width="218" height="56"></a>
+      <button class="menuButton" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="toolsNavigation">☰</button>
+      <div class="navLinks" id="toolsNavigation"><a href="首頁新版提案.html">首頁</a><a href="服務方案新版提案.html">服務方案</a><a href="實際案例新版提案.html">實際案例</a><a href="常見QA新版提案.html">常見 QA</a><a class="current" href="#top">外送經營健檢</a><a class="navCta" href="#contact">請專人聯絡</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero toolsHero" id="top">
+      <div class="shell toolsHeroGrid">
+        <div class="heroCopy">
+          <span class="eyebrow">餐飲老闆外送經營健檢</span>
+          <h1><span>先做快速健檢，</span><span>找出外送缺口。</span></h1>
+          <p class="heroLead"><span>勾選已完成項目，立即看分數與改善方向。</span><span>需要時，再試算活動毛利。</span></p>
+          <div class="heroActions"><a class="button buttonPrimary" href="#pageAudit">開始快速健檢　↓</a><a class="button buttonOutline" href="#marginTool">試算活動毛利</a></div>
+          <div class="toolsTrust"><span>兩項可分開使用</span><span>不用先留電話</span><span>結果可帶著詢問</span></div>
+        </div>
+        <aside class="toolsHeroGuide" aria-label="快速健檢內容">
+          <div class="guideScore"><strong>即時</strong><span>快速自評</span></div>
+          <div class="guideCopy"><span>完成後會得到</span><h2>分數＋優先改善方向</h2><ul><li>勾選後即時更新</li><li>最多整理三項缺口</li><li>結果可直接帶著詢問</li></ul></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section auditSection" id="pageAudit">
+      <div class="shell">
+        <div class="auditHeading"><div class="sectionHead"><span class="kicker">健檢工具 01</span><h2>你的外送頁面，現在健康嗎？</h2></div><p>勾選後會即時更新。你可以只做這項健檢；只有改過工具 02 的數字，詢問時才會一起帶入毛利試算。</p></div>
+        <div class="auditLayout">
+          <div class="auditChecklist" aria-label="外送頁面自評項目">
+            <label class="auditItem"><input type="checkbox" data-tip="把三個主打品放到最容易看到的位置"><span>前三個品項就是店內主打品</span></label>
+            <label class="auditItem"><input type="checkbox" data-tip="補齊主打品清晰照片或精修現有照片"><span>每個主打品都有清晰照片</span></label>
+            <label class="auditItem"><input type="checkbox" data-tip="精簡分類，讓顧客更快找到想吃的品項"><span>菜單分類簡單、容易理解</span></label>
+            <label class="auditItem"><input type="checkbox" data-tip="建立套餐或加購選項，提高客單價"><span>已有套餐或加購設計</span></label>
+            <label class="auditItem"><input type="checkbox" data-tip="活動上線前先試算店家負擔與毛利"><span>活動前都有試算毛利</span></label>
+            <label class="auditItem"><input type="checkbox" data-tip="固定查看近期評價與可改善問題"><span>固定查看顧客評價</span></label>
+            <label class="auditItem"><input type="checkbox" data-tip="每週檢查曝光、轉單與熱銷品變化"><span>每週追蹤頁面與訂單</span></label>
+            <label class="auditItem"><input type="checkbox" data-tip="用手機走一次完整點餐流程"><span>曾用手機檢查點餐流程</span></label>
+          </div>
+          <aside class="auditResult" aria-live="polite">
+            <div class="scoreRing" id="scoreRing"><div><strong id="auditScore">0</strong><span>分</span></div></div>
+            <span class="auditLabel">目前結果</span>
+            <h3 id="auditTitle">勾選後，看見頁面缺口</h3>
+            <p id="auditText">完成自評後，這裡會整理優先改善項目。</p>
+            <ol class="priorityList" id="priorityList"><li>尚未完成健檢</li></ol>
+            <button class="button resultCta" id="auditToContact" type="button" disabled>帶著這份健檢結果詢問　→</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee toolsMarquee" aria-label="健檢流程"><div class="marqueeTrack"><div class="marqueeSet"><b>快速自評</b><b>即時分數</b><b>優先改善方向</b><b>活動毛利試算</b><b>帶著結果詢問</b></div><div class="marqueeSet" aria-hidden="true"><b>快速自評</b><b>即時分數</b><b>優先改善方向</b><b>活動毛利試算</b><b>帶著結果詢問</b></div></div></div>
+
+    <section class="section marginSection" id="marginTool">
+      <div class="shell marginSectionGrid">
+        <div class="sectionHead marginIntro">
+          <span class="kicker">健檢工具 02</span>
+          <h2><span>活動做下去，</span><span>每一單還剩多少？</span></h2>
+          <p><span>如果想進一步檢查活動條件，</span><span>再把店家的實際數字帶進來試算。</span></p>
+        </div>
+        <section class="marginCard" aria-labelledby="marginTitle">
+          <div class="toolHeading"><span>活動條件試算</span><h2 id="marginTitle">活動毛利計算器</h2><p>以下為示意數字，修改後才會視為你的試算結果。</p></div>
+          <div class="toolInputGrid">
+            <label class="toolField"><span>商品售價（元）</span><input id="price" type="number" min="0" value="250" inputmode="decimal"></label>
+            <label class="toolField"><span>食材＋包材（元）</span><input id="cost" type="number" min="0" value="90" inputmode="decimal"></label>
+            <label class="toolField"><span>平台相關費率（%）</span><input id="fee" type="number" min="0" max="100" value="30" inputmode="decimal"></label>
+            <label class="toolField"><span>活動折扣（%）</span><input id="discount" type="number" min="0" max="100" value="20" inputmode="decimal"></label>
+            <label class="toolField toolFieldFull"><span>折扣由店家負擔比例（%）</span><input id="share" type="number" min="0" max="100" value="50" inputmode="decimal"></label>
+          </div>
+          <div class="marginMetrics" aria-live="polite">
+            <article><span>平台相關成本</span><strong id="platformCost">NT$75</strong></article>
+            <article><span>店家活動負擔</span><strong id="promoCost">NT$25</strong></article>
+            <article class="primaryMetric"><span>單筆概算剩餘</span><strong id="profit">NT$60</strong></article>
+          </div>
+          <div class="marginStatus" aria-live="polite"><div><span>單筆概算毛利率</span><strong id="marginValue">24.0%</strong></div><p id="statusText">仍有毛利空間，可再確認人事與其他成本</p></div>
+          <button class="button toolCta" id="marginToContact" type="button">帶著結果詢問專人　→</button>
+          <p class="toolDisclaimer">簡化概算未計入人事、租金、稅務與其他成本；不構成獲利承諾，實際資料以平台帳務及店家成本為準。</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="section nextStepSection">
+      <div class="shell nextStepLayout">
+        <div class="sectionHead"><span class="kicker">算完之後</span><h2><span>結果不是答案，</span><span>是下一步的起點。</span></h2></div>
+        <div class="nextStepList">
+          <article><span>01</span><div><h3>先看出缺口</h3><p>確認是成本、照片、菜單或活動條件影響目前表現。</p></div></article>
+          <article><span>02</span><div><h3>取得初步建議</h3><p>把工具結果帶進表單，讓專人先理解店家目前狀況。</p></div></article>
+          <article><span>03</span><div><h3>需要再合作</h3><p>服務內容與完整含稅報價確認清楚後，再決定是否合作。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <div id="contactMount"></div>
+  </main>
+
+  <div id="modalMount"></div>
+  <div id="footerMount"></div>
+  <script src="site-events.js?v=2"></script>
+  <script src="delivery-tools-concept.js?v=5"></script>
+</body>
+</html>
