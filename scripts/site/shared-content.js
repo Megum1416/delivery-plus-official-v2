@@ -51,7 +51,7 @@
 
   const footerHtml = `
     <footer class="footer">
-      <div class="shell"><div class="footerGrid"><div><a class="footerLogo" href="首頁新版提案.html"><img src="assets/syncompgo-logo.png" alt="外送＋｜外送規劃的專家"></a><p>從帳號申請、菜單與影像，<br>到後續營運，陪你把外送經營做好。</p></div><div><h3>網站頁面</h3><ul><li><a href="外送經營健檢新版提案.html" data-page-link="health_check">外送經營健檢</a></li><li><a href="服務方案新版提案.html">服務方案</a></li><li><a href="實際案例新版提案.html">實際案例</a></li><li><a href="常見QA新版提案.html" data-page-link="knowledge">常見 QA</a></li></ul></div><div><h3>公司資訊</h3><ul><li>競合智數股份有限公司</li><li><a href="tel:072621216">07-262-1216</a></li><li><a href="mailto:17syn.comp@gmail.com">17syn.comp@gmail.com</a></li></ul></div></div><div class="footerBottom"><span>© 2026 競合智數股份有限公司</span><a href="privacy.html">隱私權說明</a></div></div>
+      <div class="shell"><div class="footerGrid"><div><a class="footerLogo" href="首頁新版提案.html"><img src="../assets/syncompgo-logo.png" alt="外送＋｜外送規劃的專家"></a><p>從帳號申請、菜單與影像，<br>到後續營運，陪你把外送經營做好。</p></div><div><h3>網站頁面</h3><ul><li><a href="外送經營健檢新版提案.html" data-page-link="health_check">外送經營健檢</a></li><li><a href="服務方案新版提案.html">服務方案</a></li><li><a href="實際案例新版提案.html">實際案例</a></li><li><a href="常見QA新版提案.html" data-page-link="knowledge">常見 QA</a></li></ul></div><div><h3>公司資訊</h3><ul><li>競合智數股份有限公司</li><li><a href="tel:072621216">07-262-1216</a></li><li><a href="mailto:17syn.comp@gmail.com">17syn.comp@gmail.com</a></li></ul></div></div><div class="footerBottom"><span>© 2026 競合智數股份有限公司</span><a href="privacy.html">隱私權說明</a></div></div>
     </footer>
     <a class="floatLine" href="https://lin.ee/n89gZhu" target="_blank" rel="noopener">LINE 諮詢</a>`;
 

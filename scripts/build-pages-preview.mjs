@@ -5,12 +5,12 @@ const root = process.cwd();
 const output = path.join(root, ".pages-preview");
 const previewBaseUrl = "https://megum1416.github.io/delivery-plus-official-v2/";
 const publishedPages = [
-  "首頁新版提案.html",
-  "服務方案新版提案.html",
-  "實際案例新版提案.html",
-  "常見QA新版提案.html",
-  "外送經營健檢新版提案.html",
-  "privacy.html",
+  { source: "pages/首頁新版提案.html", destination: "首頁新版提案.html" },
+  { source: "pages/服務方案新版提案.html", destination: "服務方案新版提案.html" },
+  { source: "pages/實際案例新版提案.html", destination: "實際案例新版提案.html" },
+  { source: "pages/常見QA新版提案.html", destination: "常見QA新版提案.html" },
+  { source: "pages/外送經營健檢新版提案.html", destination: "外送經營健檢新版提案.html" },
+  { source: "pages/privacy.html", destination: "privacy.html" },
 ];
 
 await rm(output, { recursive: true, force: true });
@@ -18,29 +18,40 @@ await mkdir(output, { recursive: true });
 await cp(path.join(root, "assets"), path.join(output, "assets"), { recursive: true });
 
 const sharedFiles = [
-  "gtm-loader.js",
-  "site-events.js",
-  "homepage-concept.css",
-  "homepage-concept.js",
-  "service-plan-concept.css",
-  "service-plan-concept.js",
-  "results-concept.css",
-  "results-concept.js",
-  "knowledge-concept.css",
-  "knowledge-concept.js",
-  "qa-data.js",
-  "delivery-tools-concept.css",
-  "delivery-tools-concept.js",
-  "privacy-concept.css",
-  "shared-content.js",
+  "scripts/site/gtm-loader.js",
+  "scripts/site/site-events.js",
+  "scripts/site/homepage-concept.js",
+  "scripts/site/service-plan-concept.js",
+  "scripts/site/results-concept.js",
+  "scripts/site/knowledge-concept.js",
+  "scripts/site/qa-data.js",
+  "scripts/site/delivery-tools-concept.js",
+  "scripts/site/shared-content.js",
+  "styles/homepage-concept.css",
+  "styles/service-plan-concept.css",
+  "styles/results-concept.css",
+  "styles/knowledge-concept.css",
+  "styles/delivery-tools-concept.css",
+  "styles/privacy-concept.css",
 ];
 
-for (const file of [...publishedPages, ...sharedFiles]) {
-  await cp(path.join(root, file), path.join(output, file));
+for (const { source, destination } of publishedPages) {
+  await cp(path.join(root, source), path.join(output, destination));
+}
+
+for (const file of sharedFiles) {
+  const destination = path.join(output, file);
+  await mkdir(path.dirname(destination), { recursive: true });
+  if (file === "scripts/site/shared-content.js") {
+    const source = await readFile(path.join(root, file), "utf8");
+    await writeFile(destination, source.replaceAll("../assets/", "assets/"), "utf8");
+  } else {
+    await cp(path.join(root, file), destination);
+  }
 }
 
 await cp(
-  path.join(root, "首頁新版提案.html"),
+  path.join(root, "pages/首頁新版提案.html"),
   path.join(output, "index.html"),
 );
 
@@ -55,7 +66,11 @@ for (const file of htmlFiles) {
   const previewUrl = file === "index.html"
     ? previewBaseUrl
     : `${previewBaseUrl}${encodeURI(file)}`;
-  const protectedHtml = withoutExistingRule.replace(
+  const protectedHtml = withoutExistingRule
+    .replaceAll("../assets/", "assets/")
+    .replaceAll("../styles/", "styles/")
+    .replaceAll("../scripts/site/", "scripts/site/")
+    .replace(
     /<head([^>]*)>/i,
     '<head$1>\n  <meta name="robots" content="noindex, nofollow">',
   ).replace(

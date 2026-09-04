@@ -17,6 +17,17 @@
 
 這個流程只建立下載檔，不會修改 GitHub Pages，也不會自動發布正式網站。下載檔若過期，重新執行一次即可；不會影響已上架的網站或表單收件。
 
+## Repo 資料夾
+
+- `pages/`：目前正式使用的六個頁面。
+- `styles/`：網站外觀樣式。
+- `scripts/site/`：表單、互動、QA、追蹤等網站功能。
+- `scripts/`：產生主管預覽及正式上線包的工具。
+- `assets/`：Logo、照片與分享圖片。
+- `docs/`：交接說明與驗收截圖。
+- `google-apps-script/`：Google 試算表收件程式與設定說明。
+- `archive/legacy-site/`：舊版及展示用檔案，不可上架。
+
 ## 正式網址
 
 | 頁面 | 正式網址 | 上線包位置 |
@@ -34,15 +45,15 @@
 
 下列檔案只留在 repo 作歷史參考，正式上線包不會包含：
 
-- `外送加-官網改版展示.html`
-- `delivery-tools.html`
-- `uber-eats-plan.html`
-- `results.html`
-- `knowledge.html`
-- `knowledge.js`
-- `knowledge-base.css`
-- `site-optimizations.js`
-- `site-optimizations.css`
+- `archive/legacy-site/外送加-官網改版展示.html`
+- `archive/legacy-site/delivery-tools.html`
+- `archive/legacy-site/uber-eats-plan.html`
+- `archive/legacy-site/results.html`
+- `archive/legacy-site/knowledge.html`
+- `archive/legacy-site/knowledge.js`
+- `archive/legacy-site/knowledge-base.css`
+- `archive/legacy-site/site-optimizations.js`
+- `archive/legacy-site/site-optimizations.css`
 
 ## RD 上架後必須驗證
 
@@ -60,7 +71,7 @@
 
 ## 詳細交接文件
 
-- [GitHub Pages 預覽與正式網址](GITHUB_PAGES_PREVIEW.md)
-- [表單、Google Sheet、GTM 與 Google Ads](網站操作紀錄交接.md)
-- [SEO 與 GEO 設定](SEO與GEO設定交接.md)
-- [各頁按鈕導向](按鈕導向紀錄.md)
+- [GitHub Pages 預覽與正式網址](docs/GITHUB_PAGES_PREVIEW.md)
+- [表單、Google Sheet、GTM 與 Google Ads](docs/網站操作紀錄交接.md)
+- [SEO 與 GEO 設定](docs/SEO與GEO設定交接.md)
+- [各頁按鈕導向](docs/按鈕導向紀錄.md)

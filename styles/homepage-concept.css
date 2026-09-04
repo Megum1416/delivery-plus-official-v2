@@ -117,7 +117,7 @@ button,input,select,textarea{font:inherit}
 .bannerShowcase{display:grid;gap:18px}
 .accountBanner{position:relative;overflow:hidden;min-height:300px;border-radius:6px;background-position:center;background-size:cover}
 .accountBanner:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,34,28,.92),rgba(9,34,28,.12) 75%)}
-.bannerOne{aspect-ratio:16/7;background-image:url("assets/case-buerxin-cover.jpg")}
+.bannerOne{aspect-ratio:16/7;background-image:url("../assets/case-buerxin-cover.jpg")}
 .bannerTwo,.bannerThree{display:flex;min-height:0;flex-direction:column;background:#edf5f0}
 .bannerTwo:after,.bannerThree:after{display:none}
 .casePerformanceImage{position:relative;z-index:1;width:100%;height:auto;aspect-ratio:598/300;object-fit:contain;background:#edf5f0}

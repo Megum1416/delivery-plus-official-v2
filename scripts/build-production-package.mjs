@@ -5,35 +5,35 @@ const root = process.cwd();
 const output = path.join(root, ".production-site");
 
 const pages = [
-  { source: "首頁新版提案.html", destination: "index.html", route: "/" },
-  { source: "服務方案新版提案.html", destination: "uber-eats-plan/index.html", route: "/uber-eats-plan" },
-  { source: "實際案例新版提案.html", destination: "results/index.html", route: "/results" },
-  { source: "常見QA新版提案.html", destination: "knowledge/index.html", route: "/knowledge" },
-  { source: "外送經營健檢新版提案.html", destination: "delivery-tools/index.html", route: "/delivery-tools" },
-  { source: "privacy.html", destination: "privacy/index.html", route: "/privacy" },
+  { source: "pages/首頁新版提案.html", fileName: "首頁新版提案.html", destination: "index.html", route: "/" },
+  { source: "pages/服務方案新版提案.html", fileName: "服務方案新版提案.html", destination: "uber-eats-plan/index.html", route: "/uber-eats-plan" },
+  { source: "pages/實際案例新版提案.html", fileName: "實際案例新版提案.html", destination: "results/index.html", route: "/results" },
+  { source: "pages/常見QA新版提案.html", fileName: "常見QA新版提案.html", destination: "knowledge/index.html", route: "/knowledge" },
+  { source: "pages/外送經營健檢新版提案.html", fileName: "外送經營健檢新版提案.html", destination: "delivery-tools/index.html", route: "/delivery-tools" },
+  { source: "pages/privacy.html", fileName: "privacy.html", destination: "privacy/index.html", route: "/privacy" },
 ];
 
 const requiredFiles = [
-  "gtm-loader.js",
-  "site-events.js",
-  "homepage-concept.css",
-  "homepage-concept.js",
-  "service-plan-concept.css",
-  "service-plan-concept.js",
-  "results-concept.css",
-  "results-concept.js",
-  "knowledge-concept.css",
-  "knowledge-concept.js",
-  "qa-data.js",
-  "delivery-tools-concept.css",
-  "delivery-tools-concept.js",
-  "privacy-concept.css",
-  "shared-content.js",
+  "scripts/site/gtm-loader.js",
+  "scripts/site/site-events.js",
+  "scripts/site/homepage-concept.js",
+  "scripts/site/service-plan-concept.js",
+  "scripts/site/results-concept.js",
+  "scripts/site/knowledge-concept.js",
+  "scripts/site/qa-data.js",
+  "scripts/site/delivery-tools-concept.js",
+  "scripts/site/shared-content.js",
+  "styles/homepage-concept.css",
+  "styles/service-plan-concept.css",
+  "styles/results-concept.css",
+  "styles/knowledge-concept.css",
+  "styles/delivery-tools-concept.css",
+  "styles/privacy-concept.css",
   "robots.txt",
   "sitemap.xml",
 ];
 
-const routeMap = new Map(pages.map(({ source, route }) => [source, route]));
+const routeMap = new Map(pages.map(({ fileName, route }) => [fileName, route]));
 
 const replacePageLinks = (source) => {
   let result = source;
@@ -41,7 +41,11 @@ const replacePageLinks = (source) => {
   return result;
 };
 
-const makeRootRelative = (html) => replacePageLinks(html).replace(
+const makeRootRelative = (html) => replacePageLinks(html)
+  .replaceAll("../assets/", "/assets/")
+  .replaceAll("../styles/", "/styles/")
+  .replaceAll("../scripts/site/", "/scripts/site/")
+  .replace(
   /((?:href|src)=["'])(?!https?:|mailto:|tel:|data:|#|\/)([^"']+)(["'])/gi,
   "$1/$2$3",
 );
@@ -55,9 +59,9 @@ for (const file of requiredFiles) {
   const destinationPath = path.join(output, file);
   await mkdir(path.dirname(destinationPath), { recursive: true });
 
-  if (file === "shared-content.js") {
+  if (file === "scripts/site/shared-content.js") {
     const source = await readFile(sourcePath, "utf8");
-    const productionSource = replacePageLinks(source).replaceAll('assets/', '/assets/');
+    const productionSource = replacePageLinks(source).replaceAll('../assets/', '/assets/');
     await writeFile(destinationPath, productionSource, "utf8");
   } else {
     await cp(sourcePath, destinationPath);

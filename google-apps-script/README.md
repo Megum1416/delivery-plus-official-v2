@@ -10,7 +10,7 @@
 
 ## RD 上線時要保留
 
-1. 網站的 `site-events.js` 已使用上面的正式 `/exec` 網址，不是測試用 `/dev` 網址。
+1. 網站的 `scripts/site/site-events.js` 已使用上面的正式 `/exec` 網址，不是測試用 `/dev` 網址。
 2. 更新 Apps Script 時，請編輯同一個現有部署並建立新版本，不要封存或刪除部署，網址才會維持不變。
 3. Apps Script 必須維持「執行身分：fos2022.88@gmail.com」與「誰可以存取：所有人」。
 4. 不要把 Google 試算表改成公開；公開的是收件入口，不是名單內容。

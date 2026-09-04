@@ -11,24 +11,24 @@
 
 ## 預覽首頁
 
-發布流程會將 `首頁新版提案.html` 同時輸出為 GitHub Pages 的 `index.html`，因此打開 Pages 根網址即可看到新版首頁。五個主要頁面的頁首選單皆有「首頁」。
+發布流程會將 `pages/首頁新版提案.html` 同時輸出為 GitHub Pages 的 `index.html`，因此打開 Pages 根網址即可看到新版首頁。五個主要頁面的頁首選單皆有「首頁」。
 
 預覽發布只包含下列正式內容，不會公開舊版與展示用頁面：
 
-- `首頁新版提案.html`
-- `服務方案新版提案.html`
-- `實際案例新版提案.html`
-- `常見QA新版提案.html`
-- `外送經營健檢新版提案.html`
-- `privacy.html`
+- `pages/首頁新版提案.html`
+- `pages/服務方案新版提案.html`
+- `pages/實際案例新版提案.html`
+- `pages/常見QA新版提案.html`
+- `pages/外送經營健檢新版提案.html`
+- `pages/privacy.html`
 
-`qa-data.js` 是新版常見 QA 的題庫，`shared-content.js` 是常見 QA 與外送經營健檢共用的表單、送出成功視窗及頁尾。這兩個檔案都屬正式網站必要檔案。
+`scripts/site/qa-data.js` 是新版常見 QA 的題庫，`scripts/site/shared-content.js` 是常見 QA 與外送經營健檢共用的表單、送出成功視窗及頁尾。這兩個檔案都屬正式網站必要檔案。
 
 ## 正式上線
 
 RD 應直接使用 repo 原始檔，不要使用 Actions 產生的 `.pages-preview` 暫存內容。正式網站不會包含預覽用的 `noindex`。
 
-建議由 GitHub Actions 手動執行「建立正式上線包（不會發布網站）」，下載產生的 `delivery-plus-production-...`。這份下載檔與主管預覽分開，不會出現在 GitHub Pages 網站上；完整操作請先看 [README.md](README.md)。
+建議由 GitHub Actions 手動執行「建立正式上線包（不會發布網站）」，下載產生的 `delivery-plus-production-...`。這份下載檔與主管預覽分開，不會出現在 GitHub Pages 網站上；完整操作請先看 [README.md](../README.md)。
 
 正式網址對應如下：
 
@@ -45,8 +45,8 @@ RD 應直接使用 repo 原始檔，不要使用 Actions 產生的 `.pages-previ
 
 下列檔案只保留作歷史參考，不屬正式網站，也不會由 GitHub Pages 預覽流程發布：
 
-- `外送加-官網改版展示.html`
-- `delivery-tools.html`
-- `uber-eats-plan.html`
-- `results.html`
-- `knowledge.html`
+- `archive/legacy-site/外送加-官網改版展示.html`
+- `archive/legacy-site/delivery-tools.html`
+- `archive/legacy-site/uber-eats-plan.html`
+- `archive/legacy-site/results.html`
+- `archive/legacy-site/knowledge.html`
