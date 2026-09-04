@@ -4,9 +4,6 @@
   const searchStatus = document.querySelector("#qaSearchStatus");
   const backButton = document.querySelector("#qaBack");
   const breadcrumb = document.querySelector("#qaBreadcrumb");
-  const contactMount = document.querySelector("#contactMount");
-  const modalMount = document.querySelector("#modalMount");
-  const footerMount = document.querySelector("#footerMount");
 
   const majorGroups = [
     {
@@ -35,13 +32,6 @@
   const categories = new Map();
   let activeMajor = null;
   let activeGroup = null;
-
-  const fetchDocument = async (url) => {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`${url}: ${response.status}`);
-    const html = await response.text();
-    return new DOMParser().parseFromString(html, "text/html");
-  };
 
   const createElement = (tag, className, text) => {
     const node = document.createElement(tag);
@@ -293,40 +283,12 @@
     library.replaceChildren(results);
   };
 
-  const loadSharedSections = async () => {
-    const source = await fetchDocument("首頁新版提案.html");
-    const contact = source.querySelector("section#contact");
-    const modal = source.querySelector("#successModal");
-    const footer = source.querySelector("footer.footer");
-    const floatLine = source.querySelector(".floatLine");
-
-    if (!contact || !modal || !footer) throw new Error("首頁共用區塊不完整");
-
-    contactMount.replaceChildren(document.importNode(contact, true));
-    modalMount.replaceChildren(document.importNode(modal, true));
-    footerMount.replaceChildren(document.importNode(footer, true));
-    if (floatLine) footerMount.append(document.importNode(floatLine, true));
-    footerMount.querySelectorAll(".footerGrid > div:first-child > p").forEach((paragraph) => {
-      if (paragraph.textContent.includes("照片來源")) paragraph.remove();
-    });
-
-    footerMount.querySelectorAll('a[href="knowledge.html"], a[href="常見QA新版提案.html"]').forEach((link) => link.setAttribute("href", "#top"));
-
-    const sharedScript = document.createElement("script");
-    sharedScript.src = "homepage-concept.js?v=9";
-    document.body.append(sharedScript);
-  };
-
-  const loadQuestionLibrary = async () => {
-    const source = await fetchDocument("knowledge.html");
-    const sourceCategories = [...source.querySelectorAll(".qa-category")];
-    if (!sourceCategories.length) throw new Error("找不到原本的問題分類");
+  const loadQuestionLibrary = () => {
+    const sourceCategories = Array.isArray(window.QA_LIBRARY) ? window.QA_LIBRARY : [];
+    if (!sourceCategories.length) throw new Error("找不到問題分類資料");
 
     sourceCategories.forEach((sourceCategory) => {
-      const id = sourceCategory.dataset.categoryGroup;
-      const title = sourceCategory.querySelector("summary b")?.textContent.trim();
-      const description = sourceCategory.querySelector("summary small")?.textContent.trim();
-      const questions = [...sourceCategory.querySelectorAll(".qa-question")].map((question) => question.textContent.trim());
+      const { id, title, description, questions } = sourceCategory;
       if (id && title && questions.length) categories.set(id, { title, description: description || "", questions });
     });
 
@@ -355,15 +317,10 @@
     });
   };
 
-  const showLoadError = (message) => createElement("p", "libraryError", message);
-
-  Promise.allSettled([loadQuestionLibrary(), loadSharedSections()]).then((results) => {
-    if (results[0].status === "rejected") {
-      library.replaceChildren(showLoadError("問題分類暫時無法載入，請重新整理頁面。"));
-      searchStatus.textContent = "載入失敗";
-    }
-    if (results[1].status === "rejected") {
-      contactMount.replaceChildren(showLoadError("聯絡表單暫時無法載入，請重新整理頁面。"));
-    }
-  });
+  try {
+    loadQuestionLibrary();
+  } catch {
+    library.replaceChildren(createElement("p", "libraryError", "問題分類暫時無法載入，請重新整理頁面。"));
+    searchStatus.textContent = "載入失敗";
+  }
 })();

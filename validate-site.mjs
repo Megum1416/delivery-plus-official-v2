@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 
 const files = fs.readdirSync('.').filter((file) => file.endsWith('.html'));
 const problems = [];
@@ -93,6 +94,7 @@ for (const requiredText of [
 
 const previewBuilder = fs.readFileSync('scripts/build-pages-preview.mjs', 'utf8');
 if (!previewBuilder.includes('"privacy.html"')) problems.push('preview builder: privacy.html is not published');
+if (previewBuilder.includes('"knowledge.html"')) problems.push('preview builder: old knowledge.html is still published');
 
 const homepage = fs.readFileSync('首頁新版提案.html', 'utf8');
 for (const alias of ['外送加', '外送+', '外送 Plus', '競合智數', 'syncompgo.com']) {
@@ -119,10 +121,35 @@ if (responseOkIndex < 0 || successEventIndex < responseOkIndex) {
   problems.push('site-events.js: success event is not guarded by a successful receiver response');
 }
 
-const knowledge = fs.readFileSync('knowledge.html', 'utf8');
-const questionCount = (knowledge.match(/class="qa-item"/g) || []).length;
-const categoryCount = (knowledge.match(/data-category-group=/g) || []).length;
-const coreFaqCount = (knowledge.match(/<section class="answered-faq"[\s\S]*?<\/section>/)?.[0].match(/<details/g) || []).length;
+const qaDataSource = fs.readFileSync('qa-data.js', 'utf8');
+const qaSandbox = { window: {} };
+vm.runInNewContext(qaDataSource, qaSandbox);
+const qaLibrary = qaSandbox.window.QA_LIBRARY || [];
+const questionCount = qaLibrary.reduce((total, category) => total + category.questions.length, 0);
+const categoryCount = qaLibrary.length;
+const coreFaqCount = (faqSource.match(/<section class="section answeredSection"[\s\S]*?<\/section>/)?.[0].match(/<details/g) || []).length;
+
+const knowledgeScript = fs.readFileSync('knowledge-concept.js', 'utf8');
+const healthScript = fs.readFileSync('delivery-tools-concept.js', 'utf8');
+for (const [file, source] of [
+  ['knowledge-concept.js', knowledgeScript],
+  ['delivery-tools-concept.js', healthScript],
+]) {
+  if (source.includes('首頁新版提案.html')) problems.push(`${file}: still loads homepage at runtime`);
+}
+if (knowledgeScript.includes('knowledge.html')) problems.push('knowledge-concept.js: still loads old knowledge page');
+
+const sharedContent = fs.readFileSync('shared-content.js', 'utf8');
+for (const requiredText of ['id="leadForm"', 'id="successModal"', 'class="footer"', 'href="privacy.html"']) {
+  if (!sharedContent.includes(requiredText)) problems.push(`shared-content.js: missing ${requiredText}`);
+}
+
+for (const file of [...trackedPages, 'privacy.html']) {
+  const source = fs.readFileSync(file, 'utf8');
+  for (const forbiddenText of ['主管預覽', '展示版只模擬送出', 'IT HANDOFF', '上線前必須完成']) {
+    if (source.includes(forbiddenText)) problems.push(`${file}: contains preview-only text ${forbiddenText}`);
+  }
+}
 const oldLabelCount = files.reduce((total, file) => {
   return total + (fs.readFileSync(file, 'utf8').match(/免費工具/g) || []).length;
 }, 0);

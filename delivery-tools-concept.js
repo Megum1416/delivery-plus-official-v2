@@ -1,7 +1,4 @@
 (() => {
-  const contactMount = document.querySelector("#contactMount");
-  const modalMount = document.querySelector("#modalMount");
-  const footerMount = document.querySelector("#footerMount");
   const marginInputs = [...document.querySelectorAll("#marginTool input")];
   const auditInputs = [...document.querySelectorAll(".auditItem input")];
   const auditToContact = document.querySelector("#auditToContact");
@@ -102,34 +99,6 @@
     targets.forEach((target) => observer.observe(target));
   };
 
-  const fetchDocument = async (url) => {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`${url}: ${response.status}`);
-    return new DOMParser().parseFromString(await response.text(), "text/html");
-  };
-
-  const loadSharedSections = async () => {
-    const source = await fetchDocument("首頁新版提案.html");
-    const contact = source.querySelector("section#contact");
-    const modal = source.querySelector("#successModal");
-    const footer = source.querySelector("footer.footer");
-    const floatLine = source.querySelector(".floatLine");
-    if (!contact || !modal || !footer) throw new Error("首頁共用區塊不完整");
-
-    contactMount.replaceChildren(document.importNode(contact, true));
-    modalMount.replaceChildren(document.importNode(modal, true));
-    footerMount.replaceChildren(document.importNode(footer, true));
-    if (floatLine) footerMount.append(document.importNode(floatLine, true));
-    footerMount.querySelectorAll(".footerGrid > div:first-child > p").forEach((paragraph) => {
-      if (paragraph.textContent.includes("照片來源")) paragraph.remove();
-    });
-    footerMount.querySelectorAll('a[href="delivery-tools.html"], a[href="外送經營健檢新版提案.html"]').forEach((link) => link.setAttribute("href", "#top"));
-
-    const sharedScript = document.createElement("script");
-    sharedScript.src = "homepage-concept.js?v=9";
-    document.body.append(sharedScript);
-  };
-
   marginInputs.forEach((input) => input.addEventListener("input", () => {
     hasUsedMargin = true;
     calculateMargin();
@@ -149,10 +118,4 @@
   calculateAudit();
   setupPageMotion();
 
-  loadSharedSections().catch(() => {
-    const message = document.createElement("p");
-    message.className = "sharedLoadError";
-    message.textContent = "聯絡表單暫時無法載入，請重新整理頁面。";
-    contactMount.replaceChildren(message);
-  });
 })();

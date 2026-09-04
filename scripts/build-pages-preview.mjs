@@ -11,17 +11,29 @@ const publishedPages = [
   "常見QA新版提案.html",
   "外送經營健檢新版提案.html",
   "privacy.html",
-  "knowledge.html",
 ];
 
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(path.join(root, "assets"), path.join(output, "assets"), { recursive: true });
 
-const rootFiles = await readdir(root, { withFileTypes: true });
-const sharedFiles = rootFiles
-  .filter((entry) => entry.isFile() && /\.(css|js)$/i.test(entry.name))
-  .map((entry) => entry.name);
+const sharedFiles = [
+  "gtm-loader.js",
+  "site-events.js",
+  "homepage-concept.css",
+  "homepage-concept.js",
+  "service-plan-concept.css",
+  "service-plan-concept.js",
+  "results-concept.css",
+  "results-concept.js",
+  "knowledge-concept.css",
+  "knowledge-concept.js",
+  "qa-data.js",
+  "delivery-tools-concept.css",
+  "delivery-tools-concept.js",
+  "privacy-concept.css",
+  "shared-content.js",
+];
 
 for (const file of [...publishedPages, ...sharedFiles]) {
   await cp(path.join(root, file), path.join(output, file));
