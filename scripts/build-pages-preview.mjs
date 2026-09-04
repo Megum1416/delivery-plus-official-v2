@@ -3,6 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const output = path.join(root, ".pages-preview");
+const previewBaseUrl = "https://megum1416.github.io/delivery-plus-official-v2/";
 const publishedPages = [
   "首頁新版提案.html",
   "服務方案新版提案.html",
@@ -38,9 +39,18 @@ for (const file of htmlFiles) {
     /\s*<meta\s+name=["']robots["'][^>]*>/gi,
     "",
   );
+  const previewUrl = file === "index.html"
+    ? previewBaseUrl
+    : `${previewBaseUrl}${encodeURI(file)}`;
   const protectedHtml = withoutExistingRule.replace(
     /<head([^>]*)>/i,
     '<head$1>\n  <meta name="robots" content="noindex, nofollow">',
+  ).replace(
+    /(<meta\s+property=["']og:url["']\s+content=["'])[^"']*(["']\s*\/?>)/i,
+    `$1${previewUrl}$2`,
+  ).replace(
+    /(<meta\s+(?:property=["']og:image["']|name=["']twitter:image["'])\s+content=["'])https:\/\/syncompgo\.com\/assets\//gi,
+    `$1${previewBaseUrl}assets/`,
   );
   await writeFile(target, protectedHtml, "utf8");
 }

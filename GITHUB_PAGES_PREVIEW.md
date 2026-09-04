@@ -5,6 +5,7 @@
 - repo 內的五個新版 HTML：已加入正式網域使用的頁面標題、搜尋說明、分享預覽、正式網址與網站名稱設定，供 RD 上架正式網域。
 - GitHub Pages：由 `.github/workflows/preview-pages.yml` 自動建立暫時預覽檔。
 - 預覽檔的每個 HTML 都會自動加入 `noindex, nofollow`，不會污染正式原始檔。
+- 預覽檔會將分享圖片網址改為 GitHub Pages 內的同一份素材，讓主管分享預覽時也能讀到圖片。
 - GitHub Pages 網址仍屬公開網址，知道連結的人都能開啟；禁止搜尋不等於密碼保護。
 
 ## 預覽首頁
