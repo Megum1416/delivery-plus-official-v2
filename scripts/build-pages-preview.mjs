@@ -10,6 +10,7 @@ const publishedPages = [
   "實際案例新版提案.html",
   "常見QA新版提案.html",
   "外送經營健檢新版提案.html",
+  "privacy.html",
   "knowledge.html",
 ];
 

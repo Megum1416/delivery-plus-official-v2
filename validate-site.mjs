@@ -10,6 +10,7 @@ const trackedPages = [
   '常見QA新版提案.html',
   '外送經營健檢新版提案.html',
 ];
+const gtmPages = [...trackedPages, 'privacy.html'];
 const schemaExpectations = new Map([
   ['首頁新版提案.html', ['WebSite', 'Organization']],
   ['服務方案新版提案.html', ['Service', 'WebPage']],
@@ -46,10 +47,12 @@ for (const file of files) {
   }
 }
 
-for (const file of trackedPages) {
+for (const file of gtmPages) {
   const source = fs.readFileSync(file, 'utf8');
   const loaderCount = (source.match(/src=["']gtm-loader\.js\?v=1["']/g) || []).length;
   if (loaderCount !== 1) problems.push(`${file}: GTM loader=${loaderCount}`);
+
+  if (file === 'privacy.html') continue;
 
   for (const schemaType of schemaExpectations.get(file) || []) {
     if (!source.includes(`"@type": "${schemaType}"`)) {
@@ -68,6 +71,28 @@ for (const file of trackedPages) {
     }
   }
 }
+
+const staticContactPages = ['首頁新版提案.html', '服務方案新版提案.html', '實際案例新版提案.html'];
+for (const file of staticContactPages) {
+  const source = fs.readFileSync(file, 'utf8');
+  const privacyLinkCount = (source.match(/href=["']privacy\.html["']/g) || []).length;
+  if (privacyLinkCount < 2) problems.push(`${file}: privacy links=${privacyLinkCount}`);
+}
+
+const privacyPage = fs.readFileSync('privacy.html', 'utf8');
+for (const requiredText of [
+  '競合智數股份有限公司',
+  '蒐集目的與資料類別',
+  '使用期間、地區、對象與方式',
+  '你可以行使的權利',
+  '你可以選擇不提供資料',
+  'Google Ads',
+]) {
+  if (!privacyPage.includes(requiredText)) problems.push(`privacy.html: missing ${requiredText}`);
+}
+
+const previewBuilder = fs.readFileSync('scripts/build-pages-preview.mjs', 'utf8');
+if (!previewBuilder.includes('"privacy.html"')) problems.push('preview builder: privacy.html is not published');
 
 const homepage = fs.readFileSync('首頁新版提案.html', 'utf8');
 for (const alias of ['外送加', '外送+', '外送 Plus', '競合智數', 'syncompgo.com']) {
@@ -108,6 +133,7 @@ console.log(`Knowledge categories: ${categoryCount}`);
 console.log(`Core FAQs: ${coreFaqCount}`);
 console.log(`Old free-tool label: ${oldLabelCount}`);
 console.log(`Tracked SEO pages: ${trackedPages.length}`);
+console.log(`Privacy page checks: ${staticContactPages.length} static forms + 2 shared dynamic pages`);
 console.log(`Broken: ${problems.length ? `\n${problems.join('\n')}` : 'none'}`);
 
 if (questionCount !== 100 || categoryCount !== 7 || coreFaqCount !== 10 || oldLabelCount !== 0 || problems.length) {

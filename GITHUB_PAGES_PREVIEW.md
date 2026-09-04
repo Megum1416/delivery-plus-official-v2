@@ -24,5 +24,6 @@ RD 應直接使用 repo 原始檔，不要使用 Actions 產生的 `.pages-previ
 - 實際案例：`https://syncompgo.com/results`
 - 常見 QA：`https://syncompgo.com/knowledge`
 - 外送經營健檢：`https://syncompgo.com/delivery-tools`
+- 隱私權說明：`https://syncompgo.com/privacy`
 
 正式上線後，RD 需確認伺服器會將上述網址對應到五個新版頁面，再提交 Google Search Console。GitHub Pages 主管預覽仍會由發布流程自動改成 `noindex, nofollow`。
