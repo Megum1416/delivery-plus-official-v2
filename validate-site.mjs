@@ -110,7 +110,7 @@ if (!productionWorkflow.includes('actions/upload-artifact@v4')) problems.push('p
 if (productionWorkflow.includes('actions/deploy-pages')) problems.push('production workflow: must not publish GitHub Pages');
 
 const readme = fs.readFileSync('README.md', 'utf8');
-for (const requiredText of ['建立正式上線包（不會發布網站）', '不要把整個 repo 直接上傳', '其餘 90 題仍需內容負責人逐題確認']) {
+for (const requiredText of ['建立正式上線包（不會發布網站）', '不要把整個 repo 直接上傳', '100 題均已加入逐題固定回答']) {
   if (!readme.includes(requiredText)) problems.push(`README.md: missing ${requiredText}`);
 }
 
@@ -144,6 +144,9 @@ const qaSandbox = { window: {} };
 vm.runInNewContext(qaDataSource, qaSandbox);
 const qaLibrary = qaSandbox.window.QA_LIBRARY || [];
 const questionCount = qaLibrary.reduce((total, category) => total + category.questions.length, 0);
+const fixedAnswerCount = qaLibrary.reduce((total, category) => total + category.questions.filter((item) => {
+  return typeof item === 'object' && item.question?.trim() && item.answer?.trim();
+}).length, 0);
 const categoryCount = qaLibrary.length;
 const coreFaqCount = (faqSource.match(/<section class="section answeredSection"[\s\S]*?<\/section>/)?.[0].match(/<details/g) || []).length;
 
@@ -174,6 +177,7 @@ const oldLabelCount = files.reduce((total, file) => {
 
 console.log(`HTML: ${files.join(', ')}`);
 console.log(`Knowledge questions: ${questionCount}`);
+console.log(`Knowledge fixed answers: ${fixedAnswerCount}`);
 console.log(`Knowledge categories: ${categoryCount}`);
 console.log(`Core FAQs: ${coreFaqCount}`);
 console.log(`Old free-tool label: ${oldLabelCount}`);
@@ -181,6 +185,6 @@ console.log(`Tracked SEO pages: ${trackedPages.length}`);
 console.log(`Privacy page checks: ${staticContactPages.length} static forms + 2 shared dynamic pages`);
 console.log(`Broken: ${problems.length ? `\n${problems.join('\n')}` : 'none'}`);
 
-if (questionCount !== 100 || categoryCount !== 7 || coreFaqCount !== 10 || oldLabelCount !== 0 || problems.length) {
+if (questionCount !== 100 || fixedAnswerCount !== 100 || categoryCount !== 7 || coreFaqCount !== 10 || oldLabelCount !== 0 || problems.length) {
   process.exitCode = 1;
 }
