@@ -43,7 +43,7 @@
   if ('ResizeObserver' in window && marqueeSet) new ResizeObserver(updateMarqueeSpeed).observe(marqueeSet);
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const motionTargets = [...document.querySelectorAll('.sectionHead,.sectionLead,.serviceItem,.includedIntro,.includedRow,.includedNote,.priceCopy,.clarityList article,.processList article,.faqIntro,.faqList details,.contactCopy,.formCard')];
+  const motionTargets = [...document.querySelectorAll('.sectionHead,.sectionLead,.serviceItem,.serviceCta,.includedIntro,.includedRow,.includedNote,.priceCopy,.clarityList article,.processList article,.faqIntro,.faqList details,.contactCopy,.formCard')];
   motionTargets.forEach((target, index) => {
     target.classList.add('motionTarget');
     target.style.setProperty('--motion-delay', `${(index % 4) * 70}ms`);
