@@ -55,6 +55,7 @@ for (const file of gtmPages) {
   const source = fs.readFileSync(file, 'utf8');
   const loaderCount = (source.match(/src=["']\.\.\/scripts\/site\/gtm-loader\.js\?v=1["']/g) || []).length;
   if (loaderCount !== 1) problems.push(`${file}: GTM loader=${loaderCount}`);
+  if (source.includes('href="#top"')) problems.push(`${file}: navigation still adds #top to the URL`);
 
   if (file === 'pages/privacy.html') continue;
 
