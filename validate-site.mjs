@@ -110,6 +110,15 @@ for (const route of ['/', '/uber-eats-plan', '/results', '/knowledge', '/deliver
   if (!productionBuilder.includes(`route: "${route}"`)) problems.push(`production builder: missing ${route}`);
 }
 
+const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
+for (const route of ['/', '/uber-eats-plan', '/results', '/knowledge', '/delivery-tools']) {
+  const expectedUrl = `https://syncompgo.com${route === '/' ? '/' : route}`;
+  if (!sitemap.includes(`<loc>${expectedUrl}</loc>`)) problems.push(`sitemap.xml: missing ${expectedUrl}`);
+}
+if (sitemap.includes('<loc>https://syncompgo.com/privacy</loc>')) {
+  problems.push('sitemap.xml: noindex privacy page must not be listed');
+}
+
 const productionWorkflow = fs.readFileSync('.github/workflows/production-package.yml', 'utf8');
 if (!productionWorkflow.includes('actions/upload-artifact@v4')) problems.push('production workflow: download artifact is missing');
 if (productionWorkflow.includes('actions/deploy-pages')) problems.push('production workflow: must not publish GitHub Pages');
