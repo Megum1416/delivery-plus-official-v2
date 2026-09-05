@@ -99,6 +99,10 @@ for (const requiredText of [
 const previewBuilder = fs.readFileSync('scripts/build-pages-preview.mjs', 'utf8');
 if (!previewBuilder.includes('"pages/privacy.html"')) problems.push('preview builder: privacy.html is not published');
 if (previewBuilder.includes('"knowledge.html"')) problems.push('preview builder: old knowledge.html is still published');
+for (const destination of ['index.html', 'uber-eats-plan/index.html', 'results/index.html', 'knowledge/index.html', 'delivery-tools/index.html', 'privacy/index.html']) {
+  if (!previewBuilder.includes(`destination: "${destination}"`)) problems.push(`preview builder: missing clean route ${destination}`);
+}
+if (!previewBuilder.includes('makeLegacyRedirect')) problems.push('preview builder: legacy URL redirects are missing');
 
 const productionBuilder = fs.readFileSync('scripts/build-production-package.mjs', 'utf8');
 for (const route of ['/', '/uber-eats-plan', '/results', '/knowledge', '/delivery-tools', '/privacy']) {

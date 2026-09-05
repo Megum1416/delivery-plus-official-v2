@@ -5,6 +5,7 @@
 - 主管預覽：[https://megum1416.github.io/delivery-plus-official-v2/](https://megum1416.github.io/delivery-plus-official-v2/)
 - 正式網域：`https://syncompgo.com/`
 - GitHub Pages 只供預覽，已自動加入禁止搜尋設定。
+- GitHub Pages 與正式上線包皆使用英文短網址；舊中文預覽網址會自動導向新網址。
 - 正式上線請使用下方產生的乾淨上線包，不要把整個 repo 直接上傳。
 
 ## RD 如何取得正式上線包

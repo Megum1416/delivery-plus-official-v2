@@ -11,7 +11,18 @@
 
 ## 預覽首頁
 
-發布流程會將 `pages/首頁新版提案.html` 同時輸出為 GitHub Pages 的 `index.html`，因此打開 Pages 根網址即可看到新版首頁。五個主要頁面的頁首選單皆有「首頁」。
+發布流程會將六個原始頁面輸出為下列乾淨網址，因此網址列不會再出現中文檔名：
+
+| 頁面 | GitHub Pages 預覽網址 |
+| --- | --- |
+| 首頁 | `https://megum1416.github.io/delivery-plus-official-v2/` |
+| 服務方案 | `https://megum1416.github.io/delivery-plus-official-v2/uber-eats-plan/` |
+| 實際案例 | `https://megum1416.github.io/delivery-plus-official-v2/results/` |
+| 常見 QA | `https://megum1416.github.io/delivery-plus-official-v2/knowledge/` |
+| 外送經營健檢 | `https://megum1416.github.io/delivery-plus-official-v2/delivery-tools/` |
+| 隱私權說明 | `https://megum1416.github.io/delivery-plus-official-v2/privacy/` |
+
+舊的中文預覽網址會自動導向新網址，避免先前已分享的連結失效。五個主要頁面的頁首選單皆有「首頁」。
 
 預覽發布只包含下列正式內容，不會公開舊版與展示用頁面：
 
